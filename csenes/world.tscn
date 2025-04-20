@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://bm1yd3t0b850i"]
+[gd_scene load_steps=6 format=4 uid="uid://bm1yd3t0b850i"]
 
 [ext_resource type="PackedScene" uid="uid://dkhchtxql8eyj" path="res://csenes/character.tscn" id="1_ylpdp"]
 [ext_resource type="Texture2D" uid="uid://c36rhcv4p8hkp" path="res://sprites/world/tileset1.png" id="2_6wq6b"]
+[ext_resource type="PackedScene" uid="uid://dk3lkg4genek6" path="res://csenes/limb_destructor.tscn" id="3_86qdu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sagss"]
 texture = ExtResource("2_6wq6b")
@@ -48,3 +49,6 @@ tile_set = SubResource("TileSet_l3a65")
 
 [node name="character" parent="." instance=ExtResource("1_ylpdp")]
 position = Vector2(17, 13)
+
+[node name="limb_destructor" parent="." instance=ExtResource("3_86qdu")]
+position = Vector2(-40, -86)
