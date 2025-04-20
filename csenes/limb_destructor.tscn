@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bnwjj6gcij1df" path="res://scripts/limb_destructor.gd" id="1_tp4ee"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn6kg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rrt6"]
 
-[node name="limb_destructor" type="Node2D"]
+[node name="limb_destructor" type="Area2D"]
 script = ExtResource("1_tp4ee")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8rrt6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_gn6kg")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

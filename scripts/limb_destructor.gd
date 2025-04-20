@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var player = $"../character"
 
+@onready var playerbody = $layouts/body
 
-func _on_area_2d_body_entered(body):
-	if body:
-		var playerbody = player.get_child(body)
-		playerbody.rarmHP = 0
+func _on_body_entered(body: Node2D):
+	if body.name == "character":
+		playerbody.rarmHP -= 100
