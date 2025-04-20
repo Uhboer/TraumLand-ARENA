@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 @onready var head = $Head
 @onready var torso = $Torso
