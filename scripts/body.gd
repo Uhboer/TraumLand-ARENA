@@ -27,14 +27,15 @@ func _physics_process(delta):
 
 
 func _rotation_sprite():
-	if Input.is_action_just_pressed("A"):
+	var direction = Input.get_vector("A", "D", "W", "S")
+	if direction.x < 0:
 		head.flip_h = true
 		torso.flip_h = true
 		rleg.flip_h = true
 		lleg.flip_h = true
 		rarm.flip_h = true
 		larm.flip_h = true
-	if Input.is_action_just_pressed("D"):
+	if direction.x > 0:
 		head.flip_h = false
 		torso.flip_h = false
 		rleg.flip_h = false
