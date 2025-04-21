@@ -15,6 +15,10 @@ run/main_scene="res://csenes/world.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://sounds/default_bus_layout.tres"
+
 [autoload]
 
 Global="*res://scripts/global.gd"

@@ -6,7 +6,6 @@
 
 [node name="limb_destructor" type="Area2D"]
 script = ExtResource("1_tp4ee")
-metadata/limb = "lleg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8rrt6")

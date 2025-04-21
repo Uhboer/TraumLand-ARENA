@@ -26,7 +26,7 @@ var death = false
 func _physics_process(delta):
 	_rotation_sprite()
 	limb_destruction()
-	print(Global.rarmHP)
+	
 
 
 func _rotation_sprite():
