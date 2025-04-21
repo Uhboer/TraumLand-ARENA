@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=29 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c2k6ypfy3mh0r" path="res://sprites/humanity/r_arm.png" id="6_ouug3"]
 [ext_resource type="Texture2D" uid="uid://b5rkht8osrlik" path="res://sprites/humanity/l_leg.png" id="7_ju4hu"]
 [ext_resource type="Texture2D" uid="uid://bu2a7t3q83kby" path="res://sprites/humanity/walk/l/human_walkl1-Sheet.png" id="10_7hmiy"]
+[ext_resource type="AudioStream" uid="uid://bxhohv2peisrc" path="res://sounds/effects/gore/gib1.ogg" id="11_g4ng3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hmiy"]
 atlas = ExtResource("6_gs04a")
@@ -195,3 +196,7 @@ visible = false
 zoom = Vector2(1.865, 1.865)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
+
+[node name="limb_destruct" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_g4ng3")
+bus = &"Sounds"

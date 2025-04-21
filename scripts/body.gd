@@ -7,7 +7,13 @@ extends Node2D
 @onready var rarm = $RArm
 @onready var larm = $LArm
 
+@onready var limb_destructSound = $"../../limb_destruct"
+
 #HEALTH
+
+var rarmLIVE = true
+
+
 
 var death = false
 
@@ -35,8 +41,10 @@ func _rotation_sprite():
 
 
 func limb_destruction():
-	if Global.rarmHP <= 0:
+	if Global.rarmHP <= 0 && rarmLIVE:
 		rarm.visible = false
+		limb_destructSound.play()
+		rarmLIVE = false
 	if Global.larmHP <= 0:
 		larm.visible = false
 	if Global.rlegHP <= 0:
