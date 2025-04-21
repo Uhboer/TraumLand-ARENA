@@ -9,17 +9,12 @@ extends Node2D
 
 #HEALTH
 
-var headHP = 100
-var torsoHP = 100
-var rlegHP = 100
-var llegHP = 100
-var rarmHP = 100
-var larmHP = 100
-
 var death = false
 
 func _physics_process(delta):
 	_rotation_sprite()
+	limb_destruction()
+	print(Global.rarmHP)
 
 
 func _rotation_sprite():
@@ -40,11 +35,11 @@ func _rotation_sprite():
 
 
 func limb_destruction():
-	if rarmHP <= 0:
+	if Global.rarmHP <= 0:
 		rarm.visible = false
-	if larmHP <= 0:
+	if Global.larmHP <= 0:
 		larm.visible = false
-	if rlegHP <= 0:
+	if Global.rlegHP <= 0:
 		rleg.visible = false
-	if llegHP <= 0:
+	if Global.llegHP <= 0:
 		lleg.visible = false
