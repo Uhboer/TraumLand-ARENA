@@ -7,7 +7,7 @@ extends Node2D
 @onready var rarm = $RArm
 @onready var larm = $LArm
 
-@onready var limb_destructSound = $"../../limb_destruct"
+@onready var limb_destructSound = $"../../sounds/limb_destruct"
 
 #HEALTH
 

@@ -197,6 +197,8 @@ zoom = Vector2(1.865, 1.865)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
-[node name="limb_destruct" type="AudioStreamPlayer" parent="."]
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="limb_destruct" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("11_g4ng3")
 bus = &"Sounds"
