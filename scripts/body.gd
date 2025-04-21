@@ -11,9 +11,12 @@ extends Node2D
 
 #HEALTH
 
+var torsoLIVE = true
+var headLIVE = true
 var rarmLIVE = true
-
-
+var larmLIVE = true
+var rlegLIVE = true
+var llegLIVE = true
 
 var death = false
 
@@ -45,9 +48,15 @@ func limb_destruction():
 		rarm.visible = false
 		limb_destructSound.play()
 		rarmLIVE = false
-	if Global.larmHP <= 0:
+	if Global.larmHP <= 0 && larmLIVE:
 		larm.visible = false
-	if Global.rlegHP <= 0:
+		limb_destructSound.play()
+		larmLIVE = false
+	if Global.rlegHP <= 0 && rlegLIVE:
 		rleg.visible = false
-	if Global.llegHP <= 0:
+		limb_destructSound.play()
+		rlegLIVE = false
+	if Global.llegHP <= 0 && llegLIVE:
 		lleg.visible = false
+		limb_destructSound.play()
+		llegLIVE = false

@@ -4,4 +4,4 @@ extends Node2D
 
 func _on_body_entered(body: Node2D):
 	if body.name == "character":
-		Global.rarmHP = 0
+		Global.rlegHP -= 100
