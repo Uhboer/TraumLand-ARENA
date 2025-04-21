@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @onready var head = $Head
 @onready var torso = $Torso
 @onready var rleg = $RLeg
@@ -10,6 +11,8 @@ extends Node2D
 @onready var limb_destructSound = $"../../sounds/limb_destruct"
 
 #HEALTH
+
+var speed = 150
 
 var torsoLIVE = true
 var headLIVE = true
@@ -61,3 +64,11 @@ func limb_destruction():
 		lleg.visible = false
 		limb_destructSound.play()
 		llegLIVE = false
+	
+	## LEGS
+	if llegLIVE == false:
+		speed = 50
+	if rlegLIVE == false:
+		speed = 50
+	if rlegLIVE == false && llegLIVE == false:
+		speed = 0

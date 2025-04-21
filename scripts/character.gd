@@ -5,14 +5,13 @@ extends CharacterBody2D
 
 @onready var body = $layouts/body
 
-var speed = 150
 
 func _physics_process(delta):
 	var direction = Input.get_vector("A", "D", "W", "S")
 	if direction:
 		animLleg.play("Run")
 		animRleg.play("Run")
-		velocity = direction * speed
+		velocity = direction * body.speed
 	else:
 		velocity = Vector2(0, 0)
 		animLleg.play("Idle")
