@@ -10,4 +10,13 @@ script = ExtResource("1_tp4ee")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8rrt6")
 
+[node name="debug_text" type="Label" parent="."]
+offset_left = -41.0
+offset_top = -26.0
+offset_right = 41.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 13
+text = "destruct: lleg"
+horizontal_alignment = 1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

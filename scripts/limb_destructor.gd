@@ -4,6 +4,11 @@ extends Node2D
 
 @export var limb = "lleg"
 
+@onready var debug_text = $debug_text
+
+func _physics_process(delta):
+	debug_text.text = "destruct: "+limb
+
 func _on_body_entered(body: Node2D):
 	if body.name == "character":
 		if limb == "lleg":

@@ -55,7 +55,7 @@ position = Vector2(17, 13)
 position = Vector2(-49, -113)
 
 [node name="limb_destructor2" parent="." instance=ExtResource("3_86qdu")]
-position = Vector2(1, -111)
+position = Vector2(70, -114)
 limb = "rleg"
 
 [node name="ambient" type="AudioStreamPlayer" parent="."]
