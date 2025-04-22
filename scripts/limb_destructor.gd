@@ -8,7 +8,7 @@ extends Node2D
 
 @onready var bloody = $icon/bloody
 
-func _physics_process(delta):
+func _ready():
 	debug_text.text = "destruct: "+limb
 
 func _on_body_entered(body: Node2D):
