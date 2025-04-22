@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=40 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -190,9 +190,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4ng3"]
-radius = 11.0
-height = 46.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
+size = Vector2(18, 13)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7hmiy"]
 streams_count = 5
@@ -201,6 +200,10 @@ stream_1/stream = ExtResource("12_kn1f6")
 stream_2/stream = ExtResource("13_7piv2")
 stream_3/stream = ExtResource("14_pjgav")
 stream_4/stream = ExtResource("15_axdjg")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxf46"]
+radius = 11.0
+height = 46.0
 
 [node name="character" type="CharacterBody2D"]
 script = ExtResource("1_c1skk")
@@ -254,8 +257,8 @@ animation = &"none"
 autoplay = "none"
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_g4ng3")
+position = Vector2(0, 15.5)
+shape = SubResource("RectangleShape2D_led0e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
@@ -269,3 +272,9 @@ position_smoothing_speed = 8.0
 stream = SubResource("AudioStreamRandomizer_7hmiy")
 volume_db = -10.622
 bus = &"Sounds"
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_vxf46")
