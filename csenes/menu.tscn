@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c80w7b81ai53l"]
+[gd_scene load_steps=13 format=3 uid="uid://c80w7b81ai53l"]
 
 [ext_resource type="FontFile" uid="uid://crybdr80yi0o3" path="res://fonts/PIPEC TYPEFACE.ttf" id="1_syfuc"]
 [ext_resource type="Script" uid="uid://0o8ich6mknt6" path="res://scripts/menu.gd" id="1_uptc0"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dk6s1wmg13bam" path="res://sounds/effects/ui/click2.mp3" id="8_wuo45"]
 [ext_resource type="AudioStream" uid="uid://cyxgv0ar2yuwi" path="res://sounds/effects/ui/click3.mp3" id="9_jnf8q"]
 [ext_resource type="AudioStream" uid="uid://dsorsn4ym151w" path="res://sounds/effects/ui/accept.ogg" id="10_wuo45"]
+[ext_resource type="AudioStream" uid="uid://bkpv6dkha1srq" path="res://sounds/effects/ui/difficult1.ogg" id="11_jnf8q"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_06rw2"]
 streams_count = 3
@@ -125,6 +126,9 @@ stream = SubResource("AudioStreamRandomizer_06rw2")
 
 [node name="accept" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("10_wuo45")
+
+[node name="reject" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("11_jnf8q")
 
 [connection signal="mouse_entered" from="play" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="play" to="." method="_on_button_pressed"]

@@ -9,4 +9,4 @@ var rarmHP = 100
 var larmHP = 100
 
 var playername = "Nameless"
-var age = 18
+var age = 0

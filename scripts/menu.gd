@@ -7,7 +7,11 @@ extends Control
 @onready var readyfordeath = $make/readyfordeath
 @onready var playername = $make/name
 @onready var accept = $sounds/accept
+@onready var reject = $sounds/reject
 
+
+func _ready():
+	pass
 
 func _on_button_pressed():
 	click.play()
@@ -20,8 +24,11 @@ func _on_button_mouse_entered():
 
 
 func _on_readyfordeath_pressed():
-	click.play()
-	get_tree().change_scene_to_file("res://csenes/world.tscn")
+	if (Global.playername != "Nameless" && Global.playername != "") && (Global.age > str(14)):
+		click.play()
+		get_tree().change_scene_to_file("res://csenes/world.tscn")
+	else:
+		reject.play()
 
 
 func _on_readyfordeath_mouse_entered():
