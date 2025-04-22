@@ -18,7 +18,6 @@ func _ready():
 
 func _physics_process(delta):
 	Global.age = age.value
-	print(Global.age)
 	age_text.text = str(int(Global.age))
 
 func _on_button_pressed():
@@ -59,3 +58,11 @@ func _on_plus_pressed():
 func _on_minus_pressed():
 	accept.play()
 	age.value -= 1
+
+
+func _on_plus_mouse_entered():
+	hover.play()
+
+
+func _on_minus_mouse_entered():
+	hover.play()

@@ -175,5 +175,7 @@ stream = ExtResource("11_jnf8q")
 [connection signal="text_submitted" from="make/name" to="." method="_on_name_text_submitted"]
 [connection signal="mouse_entered" from="make/readyfordeath" to="." method="_on_readyfordeath_mouse_entered"]
 [connection signal="pressed" from="make/readyfordeath" to="." method="_on_readyfordeath_pressed"]
+[connection signal="mouse_entered" from="make/plus" to="." method="_on_plus_mouse_entered"]
 [connection signal="pressed" from="make/plus" to="." method="_on_plus_pressed"]
+[connection signal="mouse_entered" from="make/minus" to="." method="_on_minus_mouse_entered"]
 [connection signal="pressed" from="make/minus" to="." method="_on_minus_pressed"]
