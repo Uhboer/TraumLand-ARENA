@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c80w7b81ai53l"]
+[gd_scene load_steps=6 format=3 uid="uid://c80w7b81ai53l"]
 
-[ext_resource type="FontFile" uid="uid://crybdr80yi0o3" path="res://fonts/PIPEC TYPEFACE.ttf" id="1_syfuc"]
 [ext_resource type="Script" uid="uid://0o8ich6mknt6" path="res://scripts/menu.gd" id="1_uptc0"]
 [ext_resource type="VideoStream" uid="uid://du6ldkb5hkepm" path="res://video/CODEC.ogv" id="3_irmdc"]
+[ext_resource type="Theme" uid="uid://d2esr440oql0h" path="res://theme/Default.tres" id="3_mb1lu"]
+[ext_resource type="AudioStream" uid="uid://cdnihh0krede2" path="res://sounds/effects/ui/click.ogg" id="4_mb1lu"]
+[ext_resource type="AudioStream" uid="uid://boj5y87bnes7u" path="res://sounds/effects/ui/hover.ogg" id="4_xfl6i"]
 
 [node name="menu" type="Node2D"]
 script = ExtResource("1_uptc0")
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+[node name="menuBackground" type="VideoStreamPlayer" parent="."]
 offset_right = 1926.0
 offset_bottom = 1075.0
 stream = ExtResource("3_irmdc")
@@ -22,10 +24,20 @@ offset_right = 1119.0
 offset_bottom = 593.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_syfuc")
-theme_override_font_sizes/font_size = 100
+theme = ExtResource("3_mb1lu")
 button_mask = 5
 text = "PLAY"
 metadata/_edit_use_anchors_ = true
 
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="hover" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("4_xfl6i")
+volume_db = 5.622
+
+[node name="click" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("4_mb1lu")
+volume_db = 5.622
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
