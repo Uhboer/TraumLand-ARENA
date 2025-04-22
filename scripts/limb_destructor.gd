@@ -24,4 +24,4 @@ func _on_body_entered(body: Node2D):
 			bloody.visible = true
 		if limb == "larm":
 			Global.larmHP -= 100
-			bloody.visible = true
+			bloody.visible = true	

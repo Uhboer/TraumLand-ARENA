@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var layouts = $".."
 
 @onready var head = $Head
 @onready var torso = $Torso
@@ -68,7 +69,13 @@ func limb_destruction():
 	## LEGS
 	if llegLIVE == false:
 		speed = 50
+		laying()
 	if rlegLIVE == false:
 		speed = 50
+		laying()
 	if rlegLIVE == false && llegLIVE == false:
 		speed = 0
+
+
+func laying():
+	layouts.rotation = 80
