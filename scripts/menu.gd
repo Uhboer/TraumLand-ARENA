@@ -8,10 +8,18 @@ extends Control
 @onready var playername = $make/name
 @onready var accept = $sounds/accept
 @onready var reject = $sounds/reject
+@onready var plus = $make/plus
+@onready var minus = $make/minus
+@onready var age_text = $make/age_text
 
 
 func _ready():
 	pass
+
+func _physics_process(delta):
+	Global.age = age.value
+	print(Global.age)
+	age_text.text = str(Global.age)
 
 func _on_button_pressed():
 	click.play()
@@ -24,7 +32,7 @@ func _on_button_mouse_entered():
 
 
 func _on_readyfordeath_pressed():
-	if (Global.playername != "Nameless" && Global.playername != "") && (Global.age > str(14)):
+	if (Global.playername != "Nameless" && Global.playername != ""):
 		click.play()
 		get_tree().change_scene_to_file("res://csenes/world.tscn")
 	else:
@@ -43,10 +51,11 @@ func _on_name_text_changed(new_text):
 	Global.playername = playername.text 
 
 
-func _on_age_text_changed(new_text):
-	Global.age = age.text
-
-
-func _on_age_text_submitted(new_text):
-	Global.age = age.text
+func _on_plus_pressed():
 	accept.play()
+	age.value += 1
+
+
+func _on_minus_pressed():
+	accept.play()
+	age.value -= 1

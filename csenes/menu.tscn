@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c80w7b81ai53l"]
+[gd_scene load_steps=16 format=3 uid="uid://c80w7b81ai53l"]
 
 [ext_resource type="FontFile" uid="uid://crybdr80yi0o3" path="res://fonts/PIPEC TYPEFACE.ttf" id="1_syfuc"]
 [ext_resource type="Script" uid="uid://0o8ich6mknt6" path="res://scripts/menu.gd" id="1_uptc0"]
@@ -6,7 +6,10 @@
 [ext_resource type="Theme" uid="uid://d2esr440oql0h" path="res://theme/Default.tres" id="3_mb1lu"]
 [ext_resource type="AudioStream" uid="uid://b7mlim276wrmc" path="res://sounds/effects/ui/hover.mp3" id="4_mb1lu"]
 [ext_resource type="Texture2D" uid="uid://b5ajlkdi67d6e" path="res://sprites/humanity/human.png" id="5_dwa56"]
+[ext_resource type="Texture2D" uid="uid://c0rj25o4aj4id" path="res://sprites/ui/medium rounded/progress bar medium rounded over.png" id="6_26o1i"]
+[ext_resource type="Texture2D" uid="uid://phaknro3h1qp" path="res://sprites/ui/medium rounded/progress bar medium rounded under.png" id="6_ypndw"]
 [ext_resource type="AudioStream" uid="uid://bf6743lgbo51q" path="res://sounds/effects/ui/click.mp3" id="7_a51kk"]
+[ext_resource type="Texture2D" uid="uid://drccwd8hlkrtp" path="res://sprites/ui/medium rounded/progress bar medium rounded progress dark purple.png" id="8_26o1i"]
 [ext_resource type="AudioStream" uid="uid://dk6s1wmg13bam" path="res://sounds/effects/ui/click2.mp3" id="8_wuo45"]
 [ext_resource type="AudioStream" uid="uid://cyxgv0ar2yuwi" path="res://sounds/effects/ui/click3.mp3" id="9_jnf8q"]
 [ext_resource type="AudioStream" uid="uid://dsorsn4ym151w" path="res://sounds/effects/ui/accept.ogg" id="10_wuo45"]
@@ -37,7 +40,7 @@ offset_top = -540.0
 offset_right = 966.0
 offset_bottom = 535.0
 stream = ExtResource("3_irmdc")
-volume_db = -16.83
+volume_db = -20.0
 autoplay = true
 expand = true
 loop = true
@@ -92,15 +95,6 @@ theme_override_fonts/font = ExtResource("1_syfuc")
 placeholder_text = "NAME HERE"
 alignment = 1
 
-[node name="age" type="LineEdit" parent="make"]
-offset_left = 409.0
-offset_top = 179.0
-offset_right = 705.0
-offset_bottom = 226.0
-theme_override_fonts/font = ExtResource("1_syfuc")
-placeholder_text = "AGE"
-alignment = 1
-
 [node name="readyfordeath" type="Button" parent="make"]
 layout_mode = 0
 offset_left = 173.0
@@ -114,6 +108,51 @@ text = "ready for death"
 position = Vector2(294, 204)
 scale = Vector2(5, 5)
 texture = ExtResource("5_dwa56")
+
+[node name="age" type="TextureProgressBar" parent="make"]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 234.0
+offset_right = 659.0
+offset_bottom = 286.0
+min_value = 14.0
+max_value = 80.0
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_ypndw")
+texture_over = ExtResource("6_26o1i")
+texture_progress = ExtResource("8_26o1i")
+
+[node name="age_text" type="Label" parent="make"]
+offset_left = 422.0
+offset_top = 205.0
+offset_right = 706.0
+offset_bottom = 228.0
+theme = ExtResource("3_mb1lu")
+theme_override_colors/font_color = Color(0.619608, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_syfuc")
+theme_override_font_sizes/font_size = 30
+text = "AGE: 25"
+horizontal_alignment = 1
+
+[node name="plus" type="Button" parent="make"]
+offset_left = 663.0
+offset_top = 242.0
+offset_right = 689.0
+offset_bottom = 277.0
+theme = ExtResource("3_mb1lu")
+theme_override_font_sizes/font_size = 50
+text = "+"
+
+[node name="minus" type="Button" parent="make"]
+layout_mode = 0
+offset_left = 426.0
+offset_top = 242.0
+offset_right = 452.0
+offset_bottom = 277.0
+theme = ExtResource("3_mb1lu")
+theme_override_font_sizes/font_size = 50
+text = "-"
 
 [node name="sounds" type="Node2D" parent="."]
 
@@ -134,7 +173,7 @@ stream = ExtResource("11_jnf8q")
 [connection signal="pressed" from="play" to="." method="_on_button_pressed"]
 [connection signal="text_changed" from="make/name" to="." method="_on_name_text_changed"]
 [connection signal="text_submitted" from="make/name" to="." method="_on_name_text_submitted"]
-[connection signal="text_changed" from="make/age" to="." method="_on_age_text_changed"]
-[connection signal="text_submitted" from="make/age" to="." method="_on_age_text_submitted"]
 [connection signal="mouse_entered" from="make/readyfordeath" to="." method="_on_readyfordeath_mouse_entered"]
 [connection signal="pressed" from="make/readyfordeath" to="." method="_on_readyfordeath_pressed"]
+[connection signal="pressed" from="make/plus" to="." method="_on_plus_pressed"]
+[connection signal="pressed" from="make/minus" to="." method="_on_minus_pressed"]
