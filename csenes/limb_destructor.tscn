@@ -32,4 +32,6 @@ texture = ExtResource("2_2t5y6")
 visible = false
 texture = ExtResource("3_kemsk")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

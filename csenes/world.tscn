@@ -55,6 +55,7 @@ limb = "larm"
 [node name="limb_destructor3" parent="." instance=ExtResource("3_86qdu")]
 position = Vector2(70, -194)
 limb = "rarm"
+damage = 10
 
 [node name="limb_destructor" parent="." instance=ExtResource("3_86qdu")]
 position = Vector2(-49, -113)
