@@ -191,7 +191,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
-size = Vector2(18, 13)
+size = Vector2(18, 17.5)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7hmiy"]
 streams_count = 5
@@ -257,7 +257,7 @@ animation = &"none"
 autoplay = "none"
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 15.5)
+position = Vector2(0, 13.75)
 shape = SubResource("RectangleShape2D_led0e")
 
 [node name="Camera2D" type="Camera2D" parent="."]

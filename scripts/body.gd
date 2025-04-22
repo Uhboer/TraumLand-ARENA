@@ -11,6 +11,8 @@ extends Node2D
 
 @onready var rarmG = $"../gore/rarm"
 
+@onready var collider = $"../../collider"
+@onready var hitbox = $"../../hitbox"
 
 
 @onready var limb_destructSound = $"../../sounds/limb_destruct"
@@ -97,3 +99,6 @@ func limb_destruction():
 
 func laying():
 	layouts.rotation = 80
+	hitbox.rotation = 80
+	collider.position.y = 0
+	collider.scale.x = 2
