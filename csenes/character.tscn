@@ -267,4 +267,5 @@ position_smoothing_speed = 8.0
 
 [node name="limb_destruct" type="AudioStreamPlayer" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_7hmiy")
+volume_db = -10.622
 bus = &"Sounds"

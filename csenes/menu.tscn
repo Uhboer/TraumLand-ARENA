@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://c80w7b81ai53l"]
+[gd_scene load_steps=17 format=3 uid="uid://c80w7b81ai53l"]
 
 [ext_resource type="FontFile" uid="uid://crybdr80yi0o3" path="res://fonts/PIPEC TYPEFACE.ttf" id="1_syfuc"]
 [ext_resource type="Script" uid="uid://0o8ich6mknt6" path="res://scripts/menu.gd" id="1_uptc0"]
-[ext_resource type="VideoStream" uid="uid://du6ldkb5hkepm" path="res://video/CODEC.ogv" id="3_irmdc"]
+[ext_resource type="VideoStream" uid="uid://bxq1soarsfix6" path="res://video/podpoll.ogv" id="2_26o1i"]
 [ext_resource type="Theme" uid="uid://d2esr440oql0h" path="res://theme/Default.tres" id="3_mb1lu"]
 [ext_resource type="AudioStream" uid="uid://b7mlim276wrmc" path="res://sounds/effects/ui/hover.mp3" id="4_mb1lu"]
 [ext_resource type="Texture2D" uid="uid://b5ajlkdi67d6e" path="res://sprites/humanity/human.png" id="5_dwa56"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cyxgv0ar2yuwi" path="res://sounds/effects/ui/click3.mp3" id="9_jnf8q"]
 [ext_resource type="AudioStream" uid="uid://dsorsn4ym151w" path="res://sounds/effects/ui/accept.ogg" id="10_wuo45"]
 [ext_resource type="AudioStream" uid="uid://bkpv6dkha1srq" path="res://sounds/effects/ui/difficult1.ogg" id="11_jnf8q"]
+[ext_resource type="AudioStream" uid="uid://dhhc671qf0y5b" path="res://sounds/ambience/Coil_vs_ELpH_-_Protection_(Zvyki.com).mp3" id="15_ypndw"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_06rw2"]
 streams_count = 3
@@ -39,7 +40,7 @@ offset_left = -960.0
 offset_top = -540.0
 offset_right = 966.0
 offset_bottom = 535.0
-stream = ExtResource("3_irmdc")
+stream = ExtResource("2_26o1i")
 volume_db = -20.0
 autoplay = true
 expand = true
@@ -80,7 +81,7 @@ offset_top = -5.0
 offset_right = 1021.0
 offset_bottom = 51.0
 theme = ExtResource("3_mb1lu")
-theme_override_colors/font_color = Color(0.619608, 0, 0, 1)
+theme_override_colors/font_color = Color(0.665604, 8.0619e-07, 4.33177e-07, 1)
 theme_override_fonts/font = ExtResource("1_syfuc")
 theme_override_font_sizes/font_size = 80
 text = "let's make myself"
@@ -160,16 +161,22 @@ text = "-"
 
 [node name="hover" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("4_mb1lu")
-volume_db = 5.622
 
 [node name="click" type="AudioStreamPlayer" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_06rw2")
 
 [node name="accept" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("10_wuo45")
+volume_db = -8.433
 
 [node name="reject" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("11_jnf8q")
+
+[node name="music" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("15_ypndw")
+volume_db = -9.369
+autoplay = true
+parameters/looping = true
 
 [connection signal="mouse_entered" from="play" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="play" to="." method="_on_button_pressed"]
