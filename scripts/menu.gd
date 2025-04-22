@@ -18,7 +18,7 @@ func _ready():
 
 func _physics_process(delta):
 	Global.age = age.value
-	age_text.text = str(int(Global.age))
+	age_text.text = "AGE: " + str(int(Global.age))
 
 func _on_button_pressed():
 	click.play()
