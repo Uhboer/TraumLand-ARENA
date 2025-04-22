@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=34 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://b5rkht8osrlik" path="res://sprites/humanity/l_leg.png" id="7_ju4hu"]
 [ext_resource type="Texture2D" uid="uid://bu2a7t3q83kby" path="res://sprites/humanity/walk/l/human_walkl1-Sheet.png" id="10_7hmiy"]
 [ext_resource type="AudioStream" uid="uid://bxhohv2peisrc" path="res://sounds/effects/gore/gib1.ogg" id="11_g4ng3"]
+[ext_resource type="AudioStream" uid="uid://djnifhab7xvgf" path="res://sounds/effects/gore/gib2.ogg" id="12_kn1f6"]
+[ext_resource type="AudioStream" uid="uid://dvdr808ysm04k" path="res://sounds/effects/gore/gib3.ogg" id="13_7piv2"]
+[ext_resource type="AudioStream" uid="uid://cfjmjvsissnit" path="res://sounds/effects/gore/gib4.ogg" id="14_pjgav"]
+[ext_resource type="AudioStream" uid="uid://4bnk08op75w8" path="res://sounds/effects/gore/gib5.ogg" id="15_axdjg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hmiy"]
 atlas = ExtResource("6_gs04a")
@@ -146,6 +150,14 @@ animations = [{
 radius = 11.0
 height = 46.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7hmiy"]
+streams_count = 5
+stream_0/stream = ExtResource("11_g4ng3")
+stream_1/stream = ExtResource("12_kn1f6")
+stream_2/stream = ExtResource("13_7piv2")
+stream_3/stream = ExtResource("14_pjgav")
+stream_4/stream = ExtResource("15_axdjg")
+
 [node name="character" type="CharacterBody2D"]
 script = ExtResource("1_c1skk")
 
@@ -202,5 +214,5 @@ position_smoothing_speed = 8.0
 [node name="sounds" type="Node2D" parent="."]
 
 [node name="limb_destruct" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource("11_g4ng3")
+stream = SubResource("AudioStreamRandomizer_7hmiy")
 bus = &"Sounds"

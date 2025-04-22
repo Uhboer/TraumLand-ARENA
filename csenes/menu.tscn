@@ -124,6 +124,7 @@ texture_over = ExtResource("6_26o1i")
 texture_progress = ExtResource("8_26o1i")
 
 [node name="age_text" type="Label" parent="make"]
+layout_mode = 0
 offset_left = 422.0
 offset_top = 205.0
 offset_right = 706.0
@@ -136,6 +137,7 @@ text = "AGE: 25"
 horizontal_alignment = 1
 
 [node name="plus" type="Button" parent="make"]
+layout_mode = 0
 offset_left = 663.0
 offset_top = 242.0
 offset_right = 689.0
