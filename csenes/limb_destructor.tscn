@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk3lkg4genek6"]
+[gd_scene load_steps=6 format=3 uid="uid://dk3lkg4genek6"]
 
 [ext_resource type="Script" uid="uid://bnwjj6gcij1df" path="res://scripts/limb_destructor.gd" id="1_tp4ee"]
 [ext_resource type="Texture2D" uid="uid://o7vjkf5u6juk" path="res://sprites/world/limbeater.png" id="2_2t5y6"]
+[ext_resource type="FontFile" uid="uid://crybdr80yi0o3" path="res://fonts/PIPEC TYPEFACE.ttf" id="2_3tdym"]
 [ext_resource type="Texture2D" uid="uid://c686d014k1hes" path="res://sprites/world/limbeaterbloody.png" id="3_kemsk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rrt6"]
@@ -13,10 +14,11 @@ script = ExtResource("1_tp4ee")
 shape = SubResource("RectangleShape2D_8rrt6")
 
 [node name="debug_text" type="Label" parent="."]
-offset_left = -41.0
-offset_top = -26.0
-offset_right = 41.0
-offset_bottom = -8.0
+offset_left = -53.0
+offset_top = -27.0
+offset_right = 57.0
+offset_bottom = -9.0
+theme_override_fonts/font = ExtResource("2_3tdym")
 theme_override_font_sizes/font_size = 13
 text = "destruct: lleg"
 horizontal_alignment = 1
