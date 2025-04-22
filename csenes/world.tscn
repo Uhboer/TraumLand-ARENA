@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://bm1yd3t0b850i"]
+[gd_scene load_steps=8 format=4 uid="uid://bm1yd3t0b850i"]
 
 [ext_resource type="PackedScene" uid="uid://dkhchtxql8eyj" path="res://csenes/character.tscn" id="1_ylpdp"]
 [ext_resource type="Texture2D" uid="uid://c36rhcv4p8hkp" path="res://sprites/world/tileset1.png" id="2_6wq6b"]
 [ext_resource type="PackedScene" uid="uid://dk3lkg4genek6" path="res://csenes/limb_destructor.tscn" id="3_86qdu"]
 [ext_resource type="AudioStream" uid="uid://bebmp8ynd2x1t" path="res://sounds/ambience/Deus_Ex_OST_-_UNATCO_67615806.mp3" id="4_qtsc6"]
+[ext_resource type="AudioStream" uid="uid://bhknhfhri5hu5" path="res://sounds/ambience/start.ogg" id="5_3tdja"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sagss"]
 texture = ExtResource("2_6wq6b")
@@ -67,6 +68,13 @@ limb = "rleg"
 [node name="character" parent="." instance=ExtResource("1_ylpdp")]
 position = Vector2(17, 13)
 
-[node name="ambient" type="AudioStreamPlayer" parent="."]
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="ambient" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("4_qtsc6")
+volume_db = -10.0
+autoplay = true
+
+[node name="start" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("5_3tdja")
 autoplay = true
