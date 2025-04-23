@@ -11,7 +11,9 @@ extends Control
 @onready var plus = $make/plus
 @onready var minus = $make/minus
 @onready var age_text = $make/age_text
+@onready var readyS = $sounds/ready
 
+@export var cooldown = 1.0
 
 func _ready():
 	pass
@@ -32,7 +34,8 @@ func _on_button_mouse_entered():
 
 func _on_readyfordeath_pressed():
 	if (Global.playername != "Nameless" && Global.playername != ""):
-		click.play()
+		readyS.play()
+		await readyS.finished
 		get_tree().change_scene_to_file("res://csenes/world.tscn")
 	else:
 		reject.play()
