@@ -52,6 +52,7 @@ tile_set = SubResource("TileSet_l3a65")
 [node name="limb_destructor4" parent="." instance=ExtResource("3_86qdu")]
 position = Vector2(-63, -199)
 limb = "larm"
+damage = 20
 
 [node name="limb_destructor3" parent="." instance=ExtResource("3_86qdu")]
 position = Vector2(70, -194)

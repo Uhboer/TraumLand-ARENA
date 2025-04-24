@@ -10,6 +10,8 @@ extends Node2D
 @onready var larm = $LArm
 
 @onready var rarmG = $"../gore/rarm"
+@onready var larmG = $"../gore/larm"
+
 
 @onready var collider = $"../../collider"
 @onready var hitbox = $"../../hitbox"
@@ -47,6 +49,7 @@ func _rotation_sprite():
 		rarm.flip_h = true
 		larm.flip_h = true
 		rarmG.flip_h = true
+		larmG.flip_h = true
 	if direction.x > 0:
 		head.flip_h = false
 		torso.flip_h = false
@@ -55,6 +58,7 @@ func _rotation_sprite():
 		rarm.flip_h = false
 		larm.flip_h = false
 		rarmG.flip_h = false
+		larmG.flip_h = false
 
 func limb_damage():
 	if Global.rarmHP <= 80:
@@ -66,7 +70,14 @@ func limb_damage():
 	if Global.rarmHP <= 0:
 		rarmG.play("halfed")
 		
-	
+	if Global.larmHP <= 80:
+		larmG.play("dam1")
+	if Global.larmHP <= 50:
+		larmG.play("dam2")
+	if Global.larmHP <= 30:
+		larmG.play("dam3")
+	if Global.larmHP <= 0:
+		larmG.play("halfed")
 
 func limb_destruction():
 	if Global.rarmHP <= 0 && rarmLIVE:
