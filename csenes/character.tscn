@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=55 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -27,6 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://kr26oxs58nlo" path="res://sprites/humanity/gore/lleg/damaged2.png" id="20_4euq3"]
 [ext_resource type="Texture2D" uid="uid://b4jlg3ccyt6yv" path="res://sprites/humanity/gore/lleg/damaged3.png" id="21_sbnxk"]
 [ext_resource type="Texture2D" uid="uid://2cylrl6jod3j" path="res://sprites/humanity/gore/lleg/halfed.png" id="22_gmu4k"]
+[ext_resource type="Texture2D" uid="uid://dobpvp1heiqap" path="res://sprites/humanity/gore/rleg/damaged1.png" id="23_a7olq"]
+[ext_resource type="Texture2D" uid="uid://bo5x702dk42yu" path="res://sprites/humanity/gore/rleg/damaged2.png" id="24_ifsam"]
+[ext_resource type="Texture2D" uid="uid://238himo084wh" path="res://sprites/humanity/gore/rleg/damaged3.png" id="25_s3wjk"]
+[ext_resource type="Texture2D" uid="uid://c3ra7fnuvrv8i" path="res://sprites/humanity/gore/rleg/halfed.png" id="26_ogkj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hmiy"]
 atlas = ExtResource("6_gs04a")
@@ -278,6 +282,46 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_4odmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_a7olq")
+}],
+"loop": true,
+"name": &"dam1",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_ifsam")
+}],
+"loop": true,
+"name": &"dam2",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_s3wjk")
+}],
+"loop": true,
+"name": &"dam3",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_ogkj4")
+}],
+"loop": true,
+"name": &"halfed",
+"speed": 1.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"none",
+"speed": 1.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
 size = Vector2(18, 17.5)
 
@@ -353,6 +397,12 @@ autoplay = "none"
 [node name="lleg" type="AnimatedSprite2D" parent="layouts/gore"]
 scale = Vector2(0.688, 0.688)
 sprite_frames = SubResource("SpriteFrames_mkcqw")
+animation = &"dam1"
+autoplay = "none"
+
+[node name="rleg" type="AnimatedSprite2D" parent="layouts/gore"]
+scale = Vector2(0.688, 0.688)
+sprite_frames = SubResource("SpriteFrames_4odmk")
 animation = &"none"
 autoplay = "none"
 
