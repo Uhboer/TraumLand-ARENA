@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=45 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -12,12 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://bu2a7t3q83kby" path="res://sprites/humanity/walk/l/human_walkl1-Sheet.png" id="10_7hmiy"]
 [ext_resource type="AudioStream" uid="uid://bxhohv2peisrc" path="res://sounds/effects/gore/gib1.ogg" id="11_g4ng3"]
 [ext_resource type="Texture2D" uid="uid://dlux14latxj6q" path="res://sprites/humanity/gore/larm/damaged1.png" id="11_led0e"]
+[ext_resource type="Texture2D" uid="uid://c05tpx1d15hwr" path="res://sprites/humanity/gore/rarm/damaged1.png" id="11_vxf46"]
 [ext_resource type="AudioStream" uid="uid://djnifhab7xvgf" path="res://sounds/effects/gore/gib2.ogg" id="12_kn1f6"]
+[ext_resource type="Texture2D" uid="uid://cd02h07ll3rd7" path="res://sprites/humanity/gore/rarm/damaged2.png" id="12_mkcqw"]
 [ext_resource type="Texture2D" uid="uid://dkv4qsh8mvy3u" path="res://sprites/humanity/gore/larm/damaged2.png" id="12_vxf46"]
 [ext_resource type="AudioStream" uid="uid://dvdr808ysm04k" path="res://sounds/effects/gore/gib3.ogg" id="13_7piv2"]
+[ext_resource type="Texture2D" uid="uid://kn325ngdmil6" path="res://sprites/humanity/gore/rarm/damaged3.png" id="13_ecyv8"]
 [ext_resource type="Texture2D" uid="uid://x246jor73ka4" path="res://sprites/humanity/gore/larm/damaged3.png" id="13_waj7w"]
 [ext_resource type="Texture2D" uid="uid://uhopaiowihf3" path="res://sprites/humanity/gore/larm/halfed.png" id="14_mtfgo"]
 [ext_resource type="AudioStream" uid="uid://cfjmjvsissnit" path="res://sounds/effects/gore/gib4.ogg" id="14_pjgav"]
+[ext_resource type="Texture2D" uid="uid://c5rl8s1pg1l6w" path="res://sprites/humanity/gore/rarm/halfed.png" id="14_xucwy"]
 [ext_resource type="AudioStream" uid="uid://4bnk08op75w8" path="res://sounds/effects/gore/gib5.ogg" id="15_axdjg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hmiy"]
@@ -152,6 +156,38 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_led0e"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_vxf46")
+}],
+"loop": true,
+"name": &"dam1",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_mkcqw")
+}],
+"loop": true,
+"name": &"dam2",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ecyv8")
+}],
+"loop": true,
+"name": &"dam3",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_xucwy")
+}],
+"loop": true,
+"name": &"halfed",
+"speed": 1.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"none",
@@ -259,6 +295,7 @@ frame_progress = 0.369711
 [node name="gore" type="Node2D" parent="layouts"]
 
 [node name="rarm" type="AnimatedSprite2D" parent="layouts/gore"]
+scale = Vector2(0.688, 0.688)
 sprite_frames = SubResource("SpriteFrames_led0e")
 animation = &"none"
 autoplay = "none"
@@ -266,7 +303,7 @@ autoplay = "none"
 [node name="larm" type="AnimatedSprite2D" parent="layouts/gore"]
 scale = Vector2(0.688, 0.688)
 sprite_frames = SubResource("SpriteFrames_kn1f6")
-animation = &"dam1"
+animation = &"none"
 autoplay = "none"
 
 [node name="collider" type="CollisionShape2D" parent="."]
