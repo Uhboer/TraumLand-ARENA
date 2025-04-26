@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c80w7b81ai53l"]
+[gd_scene load_steps=19 format=3 uid="uid://c80w7b81ai53l"]
 
 [ext_resource type="FontFile" uid="uid://crybdr80yi0o3" path="res://fonts/PIPEC TYPEFACE.ttf" id="1_syfuc"]
 [ext_resource type="Script" uid="uid://0o8ich6mknt6" path="res://scripts/menu.gd" id="1_uptc0"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bkpv6dkha1srq" path="res://sounds/effects/ui/difficult1.ogg" id="11_jnf8q"]
 [ext_resource type="AudioStream" uid="uid://dhhc671qf0y5b" path="res://sounds/ambience/Coil_vs_ELpH_-_Protection_(Zvyki.com).mp3" id="15_ypndw"]
 [ext_resource type="AudioStream" uid="uid://cit74ia57wtmd" path="res://sounds/effects/ui/my.ogg" id="16_r87pu"]
+[ext_resource type="AudioStream" uid="uid://cu0bbk30w8lva" path="res://sounds/effects/ui/thingg.ogg" id="17_dfko6"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_06rw2"]
 streams_count = 3
@@ -181,6 +182,10 @@ parameters/looping = true
 
 [node name="ready" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("16_r87pu")
+
+[node name="typing" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("17_dfko6")
+volume_db = -15.0
 
 [connection signal="mouse_entered" from="play" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="play" to="." method="_on_button_pressed"]

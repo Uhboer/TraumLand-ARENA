@@ -12,8 +12,8 @@ extends Control
 @onready var minus = $make/minus
 @onready var age_text = $make/age_text
 @onready var readyS = $sounds/ready
+@onready var typing = $sounds/typing
 
-@export var cooldown = 1.0
 
 func _ready():
 	pass
@@ -51,7 +51,8 @@ func _on_name_text_submitted(new_text):
 	accept.play()
 
 func _on_name_text_changed(new_text):
-	Global.playername = playername.text 
+	Global.playername = playername.text
+	typing.play()
 
 
 func _on_plus_pressed():
