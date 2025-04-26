@@ -61,6 +61,7 @@ damage = 20
 
 [node name="limb_destructor" parent="." instance=ExtResource("3_86qdu")]
 position = Vector2(-49, -113)
+damage = 20
 
 [node name="limb_destructor2" parent="." instance=ExtResource("3_86qdu")]
 position = Vector2(70, -114)
