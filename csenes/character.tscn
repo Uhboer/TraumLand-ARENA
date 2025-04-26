@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=41 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -150,6 +150,14 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_led0e"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"none",
+"speed": 1.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kn1f6"]
 animations = [{
 "frames": [{
@@ -251,15 +259,14 @@ frame_progress = 0.369711
 [node name="gore" type="Node2D" parent="layouts"]
 
 [node name="rarm" type="AnimatedSprite2D" parent="layouts/gore"]
-scale = Vector2(0.688, 0.688)
-sprite_frames = SubResource("SpriteFrames_kn1f6")
+sprite_frames = SubResource("SpriteFrames_led0e")
 animation = &"none"
 autoplay = "none"
 
 [node name="larm" type="AnimatedSprite2D" parent="layouts/gore"]
 scale = Vector2(0.688, 0.688)
 sprite_frames = SubResource("SpriteFrames_kn1f6")
-animation = &"none"
+animation = &"dam1"
 autoplay = "none"
 
 [node name="collider" type="CollisionShape2D" parent="."]

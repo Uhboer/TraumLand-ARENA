@@ -34,6 +34,7 @@ func _on_button_mouse_entered():
 
 func _on_readyfordeath_pressed():
 	if (Global.playername != "Nameless" && Global.playername != ""):
+		readyfordeath.disabled = true
 		readyS.play()
 		await readyS.finished
 		get_tree().change_scene_to_file("res://csenes/world.tscn")
