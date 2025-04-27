@@ -18,7 +18,6 @@ extends Node2D
 @onready var collider = $"../../collider"
 @onready var hitbox = $"../../hitbox"
 
-
 @onready var limb_destructSound = $"../../sounds/limb_destruct"
 
 #HEALTH

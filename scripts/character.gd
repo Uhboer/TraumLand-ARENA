@@ -25,7 +25,7 @@ func _physics_process(delta):
 
 func combatmode():
 	if Input.is_action_just_released("F"):
-		isEnable = !isEnable  # Инвертируем значение
+		isEnable = !isEnable
 		if isEnable:
 			combatModeSound.play()
 		else:
