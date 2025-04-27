@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c0rj25o4aj4id" path="res://sprites/ui/medium rounded/progress bar medium rounded over.png" id="6_26o1i"]
 [ext_resource type="Texture2D" uid="uid://phaknro3h1qp" path="res://sprites/ui/medium rounded/progress bar medium rounded under.png" id="6_ypndw"]
 [ext_resource type="AudioStream" uid="uid://bf6743lgbo51q" path="res://sounds/effects/ui/click.mp3" id="7_a51kk"]
-[ext_resource type="Texture2D" uid="uid://drccwd8hlkrtp" path="res://sprites/ui/medium rounded/progress bar medium rounded progress dark purple.png" id="8_26o1i"]
+[ext_resource type="Texture2D" uid="uid://crw1pqb225u36" path="res://sprites/ui/medium rounded/progress bar medium rounded progress purple.png" id="8_dfko6"]
 [ext_resource type="AudioStream" uid="uid://dk6s1wmg13bam" path="res://sounds/effects/ui/click2.mp3" id="8_wuo45"]
 [ext_resource type="AudioStream" uid="uid://cyxgv0ar2yuwi" path="res://sounds/effects/ui/click3.mp3" id="9_jnf8q"]
 [ext_resource type="AudioStream" uid="uid://dsorsn4ym151w" path="res://sounds/effects/ui/accept.ogg" id="10_wuo45"]
@@ -124,7 +124,7 @@ value = 25.0
 nine_patch_stretch = true
 texture_under = ExtResource("6_ypndw")
 texture_over = ExtResource("6_26o1i")
-texture_progress = ExtResource("8_26o1i")
+texture_progress = ExtResource("8_dfko6")
 
 [node name="age_text" type="Label" parent="make"]
 layout_mode = 0
@@ -185,7 +185,7 @@ stream = ExtResource("16_r87pu")
 
 [node name="typing" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("17_dfko6")
-volume_db = -15.0
+volume_db = -20.0
 
 [connection signal="mouse_entered" from="play" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="play" to="." method="_on_button_pressed"]
