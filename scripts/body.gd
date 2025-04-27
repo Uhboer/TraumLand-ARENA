@@ -67,6 +67,8 @@ func _rotation_sprite():
 		rlegG.flip_h = false
 
 func limb_damage():
+	if Global.rarmHP > 80:
+		rarmG.play("none")
 	if Global.rarmHP <= 80:
 		rarmG.play("dam1")
 	if Global.rarmHP <= 50:
@@ -75,7 +77,9 @@ func limb_damage():
 		rarmG.play("dam3")
 	if Global.rarmHP <= 0:
 		rarmG.play("halfed")
-		
+	
+	if Global.larmHP > 80:
+		larmG.play("none")
 	if Global.larmHP <= 80:
 		larmG.play("dam1")
 	if Global.larmHP <= 50:
@@ -85,6 +89,8 @@ func limb_damage():
 	if Global.larmHP <= 0:
 		larmG.play("halfed")
 	
+	if Global.llegHP > 80:
+		llegG.play("none")
 	if Global.llegHP <= 80:
 		llegG.play("dam1")
 	if Global.llegHP <= 50:
@@ -94,6 +100,8 @@ func limb_damage():
 	if Global.llegHP <= 0:
 		llegG.play("halfed")
 		
+	if Global.rlegHP > 80:
+		llegG.play("none")
 	if Global.rlegHP <= 80:
 		rlegG.play("dam1")
 	if Global.rlegHP <= 50:

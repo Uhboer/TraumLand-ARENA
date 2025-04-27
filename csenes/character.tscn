@@ -397,7 +397,7 @@ autoplay = "none"
 [node name="lleg" type="AnimatedSprite2D" parent="layouts/gore"]
 scale = Vector2(0.688, 0.688)
 sprite_frames = SubResource("SpriteFrames_mkcqw")
-animation = &"dam1"
+animation = &"none"
 autoplay = "none"
 
 [node name="rleg" type="AnimatedSprite2D" parent="layouts/gore"]
