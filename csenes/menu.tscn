@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://c80w7b81ai53l"]
+[gd_scene load_steps=22 format=3 uid="uid://c80w7b81ai53l"]
 
 [ext_resource type="FontFile" uid="uid://crybdr80yi0o3" path="res://fonts/PIPEC TYPEFACE.ttf" id="1_syfuc"]
 [ext_resource type="Script" uid="uid://0o8ich6mknt6" path="res://scripts/menu.gd" id="1_uptc0"]
 [ext_resource type="VideoStream" uid="uid://bxq1soarsfix6" path="res://video/podpoll.ogv" id="2_26o1i"]
 [ext_resource type="Theme" uid="uid://d2esr440oql0h" path="res://theme/Default.tres" id="3_mb1lu"]
 [ext_resource type="AudioStream" uid="uid://b7mlim276wrmc" path="res://sounds/effects/ui/hover.mp3" id="4_mb1lu"]
+[ext_resource type="Theme" uid="uid://cnqvjq1hejbwc" path="res://theme/Writinglabel.tres" id="5_d6hd6"]
 [ext_resource type="Texture2D" uid="uid://b5ajlkdi67d6e" path="res://sprites/humanity/human.png" id="5_dwa56"]
 [ext_resource type="Texture2D" uid="uid://c0rj25o4aj4id" path="res://sprites/ui/medium rounded/progress bar medium rounded over.png" id="6_26o1i"]
 [ext_resource type="Texture2D" uid="uid://phaknro3h1qp" path="res://sprites/ui/medium rounded/progress bar medium rounded under.png" id="6_ypndw"]
@@ -92,10 +93,11 @@ text = "let's make myself"
 
 [node name="name" type="LineEdit" parent="make"]
 layout_mode = 0
-offset_left = 411.0
+offset_left = 458.0
 offset_top = 89.0
-offset_right = 707.0
+offset_right = 660.0
 offset_bottom = 136.0
+theme = ExtResource("5_d6hd6")
 theme_override_fonts/font = ExtResource("1_syfuc")
 placeholder_text = "NAME HERE"
 alignment = 1
@@ -162,6 +164,7 @@ theme_override_font_sizes/font_size = 50
 text = "-"
 
 [node name="faith" type="Label" parent="make"]
+layout_mode = 0
 offset_left = 433.0
 offset_top = 295.0
 offset_right = 696.0
@@ -184,6 +187,7 @@ theme_override_font_sizes/font_size = 30
 text = "CHAOS"
 
 [node name="angast" type="Button" parent="make/faith"]
+layout_mode = 0
 offset_left = 156.0
 offset_top = 47.0
 offset_right = 325.0
