@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=57 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://bo5x702dk42yu" path="res://sprites/humanity/gore/rleg/damaged2.png" id="24_ifsam"]
 [ext_resource type="Texture2D" uid="uid://238himo084wh" path="res://sprites/humanity/gore/rleg/damaged3.png" id="25_s3wjk"]
 [ext_resource type="Texture2D" uid="uid://c3ra7fnuvrv8i" path="res://sprites/humanity/gore/rleg/halfed.png" id="26_ogkj4"]
+[ext_resource type="AudioStream" uid="uid://ce1pbde4k1a45" path="res://sounds/effects/combatmode/combatmode.ogg" id="32_s3wjk"]
+[ext_resource type="AudioStream" uid="uid://c5dgl8humf0rd" path="res://sounds/effects/combatmode/combatmodeoff.ogg" id="33_ogkj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hmiy"]
 atlas = ExtResource("6_gs04a")
@@ -422,6 +424,12 @@ position_smoothing_speed = 8.0
 stream = SubResource("AudioStreamRandomizer_7hmiy")
 volume_db = -10.622
 bus = &"Sounds"
+
+[node name="combatmode" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("32_s3wjk")
+
+[node name="combatmodeoff" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("33_ogkj4")
 
 [node name="hitbox" type="Area2D" parent="."]
 
