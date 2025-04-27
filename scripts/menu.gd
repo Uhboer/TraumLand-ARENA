@@ -8,11 +8,16 @@ extends Control
 @onready var playername = $make/name
 @onready var accept = $sounds/accept
 @onready var reject = $sounds/reject
-@onready var plus = $make/plus
-@onready var minus = $make/minus
+@onready var plus = $make/age_text/plus
+@onready var minus = $make/age_text/minus
 @onready var age_text = $make/age_text
 @onready var readyS = $sounds/ready
 @onready var typing = $sounds/typing
+@onready var chaos = $make/faith/chaos
+@onready var angast = $make/faith/angast
+
+@onready var angastS = $make/faith/Angast
+@onready var chaosS = $make/faith/Chaos
 
 
 func _ready():
@@ -33,7 +38,7 @@ func _on_button_mouse_entered():
 
 
 func _on_readyfordeath_pressed():
-	if (Global.playername != "Nameless" && Global.playername != ""):
+	if Global.playername != "Nameless" && Global.playername != "" && Global.faith != "":
 		readyfordeath.disabled = true
 		readyS.play()
 		await readyS.finished
@@ -70,4 +75,30 @@ func _on_plus_mouse_entered():
 
 
 func _on_minus_mouse_entered():
+	hover.play()
+
+
+func _on_chaos_pressed():
+	click.play()
+	chaosS.visible = true
+	angastS.visible = false
+	chaos.disabled = true
+	angast.disabled = false
+	Global.faith = "chaos"
+
+
+func _on_angast_pressed():
+	click.play()
+	chaosS.visible = false
+	angastS.visible = true
+	chaos.disabled = false
+	angast.disabled = true
+	Global.faith = "angast"
+
+
+func _on_chaos_mouse_entered():
+	hover.play()
+
+
+func _on_angast_mouse_entered():
 	hover.play()

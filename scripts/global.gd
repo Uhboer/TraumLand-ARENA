@@ -10,3 +10,5 @@ var larmHP = 100
 
 var playername = "Nameless"
 var age = 0
+
+var faith = ""
