@@ -15,6 +15,11 @@ extends Control
 @onready var typing = $sounds/typing
 @onready var chaos = $make/faith/chaos
 @onready var angast = $make/faith/angast
+@onready var great = $sounds/great
+@onready var ᛉ = $make/name/ᛉ
+@onready var ᛣ = $make/name/ᛣ
+@onready var charactername = $make/name/charactername
+
 
 @onready var angastS = $make/faith/Angast
 @onready var chaosS = $make/faith/Chaos
@@ -52,11 +57,16 @@ func _on_readyfordeath_mouse_entered():
 
 
 func _on_name_text_submitted(new_text):
-	Global.playername = playername.text
-	accept.play()
+	if playername.text != "" && len(playername.text) <= 10:
+		Global.playername = playername.text
+		charactername.text = "Name: " + Global.playername
+		great.play()
+		ᛉ.visible = true
+		ᛣ.visible = true
+	else:
+		reject.play()
 
 func _on_name_text_changed(new_text):
-	Global.playername = playername.text
 	typing.play()
 
 

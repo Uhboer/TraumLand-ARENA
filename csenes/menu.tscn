@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c80w7b81ai53l"]
+[gd_scene load_steps=24 format=3 uid="uid://c80w7b81ai53l"]
 
 [ext_resource type="FontFile" uid="uid://crybdr80yi0o3" path="res://fonts/PIPEC TYPEFACE.ttf" id="1_syfuc"]
 [ext_resource type="Script" uid="uid://0o8ich6mknt6" path="res://scripts/menu.gd" id="1_uptc0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://cnqvjq1hejbwc" path="res://theme/Writinglabel.tres" id="5_d6hd6"]
 [ext_resource type="Texture2D" uid="uid://b5ajlkdi67d6e" path="res://sprites/humanity/human.png" id="5_dwa56"]
 [ext_resource type="Texture2D" uid="uid://c0rj25o4aj4id" path="res://sprites/ui/medium rounded/progress bar medium rounded over.png" id="6_26o1i"]
+[ext_resource type="Theme" uid="uid://bmvm7ut7ewsn2" path="res://theme/label.tres" id="6_sj3wv"]
 [ext_resource type="Texture2D" uid="uid://phaknro3h1qp" path="res://sprites/ui/medium rounded/progress bar medium rounded under.png" id="6_ypndw"]
 [ext_resource type="AudioStream" uid="uid://bf6743lgbo51q" path="res://sounds/effects/ui/click.mp3" id="7_a51kk"]
 [ext_resource type="Texture2D" uid="uid://crw1pqb225u36" path="res://sprites/ui/medium rounded/progress bar medium rounded progress purple.png" id="8_dfko6"]
@@ -20,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://dhhc671qf0y5b" path="res://sounds/ambience/Coil_vs_ELpH_-_Protection_(Zvyki.com).mp3" id="15_ypndw"]
 [ext_resource type="AudioStream" uid="uid://cit74ia57wtmd" path="res://sounds/effects/ui/my.ogg" id="16_r87pu"]
 [ext_resource type="AudioStream" uid="uid://cu0bbk30w8lva" path="res://sounds/effects/ui/thingg.ogg" id="17_dfko6"]
+[ext_resource type="AudioStream" uid="uid://blyv4anhwmkyh" path="res://sounds/effects/ui/type.ogg" id="20_d6hd6"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_06rw2"]
 streams_count = 3
@@ -52,6 +54,7 @@ expand = true
 loop = true
 
 [node name="play" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -72,7 +75,6 @@ text = "PLAY"
 metadata/_edit_use_anchors_ = true
 
 [node name="make" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_left = -550.0
 offset_top = -345.0
@@ -85,8 +87,8 @@ offset_left = 166.0
 offset_top = -5.0
 offset_right = 1021.0
 offset_bottom = 51.0
-theme = ExtResource("3_mb1lu")
-theme_override_colors/font_color = Color(0.665604, 8.0619e-07, 4.33177e-07, 1)
+theme = ExtResource("6_sj3wv")
+theme_override_colors/font_color = Color(0.605675, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_syfuc")
 theme_override_font_sizes/font_size = 80
 text = "let's make myself"
@@ -94,34 +96,65 @@ text = "let's make myself"
 [node name="name" type="LineEdit" parent="make"]
 layout_mode = 0
 offset_left = 458.0
-offset_top = 89.0
+offset_top = 128.0
 offset_right = 660.0
-offset_bottom = 136.0
+offset_bottom = 175.0
 theme = ExtResource("5_d6hd6")
 theme_override_fonts/font = ExtResource("1_syfuc")
 placeholder_text = "NAME HERE"
 alignment = 1
 
+[node name="ᛉ" type="Label" parent="make/name"]
+visible = false
+layout_mode = 0
+offset_left = -33.0
+offset_top = -13.0
+offset_right = -6.0
+offset_bottom = 54.0
+theme = ExtResource("6_sj3wv")
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+text = "ᛉ"
+
+[node name="ᛣ" type="Label" parent="make/name"]
+visible = false
+offset_left = 209.0
+offset_top = -12.0
+offset_right = 236.0
+offset_bottom = 55.0
+theme = ExtResource("6_sj3wv")
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+text = "ᛣ"
+
+[node name="charactername" type="Label" parent="make/name"]
+offset_left = -134.0
+offset_top = -55.0
+offset_right = 375.0
+offset_bottom = -18.0
+theme = ExtResource("6_sj3wv")
+theme_override_font_sizes/font_size = 40
+text = "Name: None"
+horizontal_alignment = 1
+
 [node name="readyfordeath" type="Button" parent="make"]
 layout_mode = 0
 offset_left = 173.0
-offset_top = 563.0
+offset_top = 581.0
 offset_right = 934.0
-offset_bottom = 625.0
+offset_bottom = 643.0
 theme = ExtResource("3_mb1lu")
 text = "ready for death"
 
 [node name="human" type="Sprite2D" parent="make"]
-position = Vector2(294, 204)
+position = Vector2(294, 222)
 scale = Vector2(5, 5)
 texture = ExtResource("5_dwa56")
 
 [node name="age" type="TextureProgressBar" parent="make"]
 layout_mode = 0
 offset_left = 462.0
-offset_top = 204.0
+offset_top = 222.0
 offset_right = 659.0
-offset_bottom = 256.0
+offset_bottom = 274.0
 min_value = 14.0
 max_value = 80.0
 value = 25.0
@@ -133,11 +166,10 @@ texture_progress = ExtResource("8_dfko6")
 [node name="age_text" type="Label" parent="make"]
 layout_mode = 0
 offset_left = 422.0
-offset_top = 175.0
+offset_top = 193.0
 offset_right = 706.0
-offset_bottom = 198.0
-theme = ExtResource("3_mb1lu")
-theme_override_colors/font_color = Color(0.619608, 0, 0, 1)
+offset_bottom = 216.0
+theme = ExtResource("6_sj3wv")
 theme_override_fonts/font = ExtResource("1_syfuc")
 theme_override_font_sizes/font_size = 30
 text = "AGE: 25"
@@ -166,10 +198,10 @@ text = "-"
 [node name="faith" type="Label" parent="make"]
 layout_mode = 0
 offset_left = 433.0
-offset_top = 295.0
+offset_top = 313.0
 offset_right = 696.0
-offset_bottom = 318.0
-theme = ExtResource("3_mb1lu")
+offset_bottom = 336.0
+theme = ExtResource("6_sj3wv")
 theme_override_colors/font_color = Color(0.619608, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_syfuc")
 theme_override_font_sizes/font_size = 30
@@ -234,8 +266,12 @@ parameters/looping = true
 stream = ExtResource("16_r87pu")
 
 [node name="typing" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("20_d6hd6")
+volume_db = -10.0
+
+[node name="great" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("17_dfko6")
-volume_db = -20.0
+volume_db = -5.0
 
 [connection signal="mouse_entered" from="play" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="play" to="." method="_on_button_pressed"]
