@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=66 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://bo5x702dk42yu" path="res://sprites/humanity/gore/rleg/damaged2.png" id="24_ifsam"]
 [ext_resource type="Texture2D" uid="uid://238himo084wh" path="res://sprites/humanity/gore/rleg/damaged3.png" id="25_s3wjk"]
 [ext_resource type="Texture2D" uid="uid://c3ra7fnuvrv8i" path="res://sprites/humanity/gore/rleg/halfed.png" id="26_ogkj4"]
+[ext_resource type="Texture2D" uid="uid://by4ewkncqnk6w" path="res://sprites/humanity/gore/torso/damaged-Sheet.png" id="27_4odmk"]
+[ext_resource type="Texture2D" uid="uid://cn7mtstjsdmit" path="res://sprites/humanity/gore/torso/destroyed.png" id="28_caupf"]
 [ext_resource type="AudioStream" uid="uid://ce1pbde4k1a45" path="res://sounds/effects/combatmode/combatmode.ogg" id="32_s3wjk"]
 [ext_resource type="AudioStream" uid="uid://c5dgl8humf0rd" path="res://sounds/effects/combatmode/combatmodeoff.ogg" id="33_ogkj4"]
 
@@ -324,6 +326,94 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cw70"]
+atlas = ExtResource("27_4odmk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag8hx"]
+atlas = ExtResource("27_4odmk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqile"]
+atlas = ExtResource("27_4odmk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q0od"]
+atlas = ExtResource("27_4odmk")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bo03"]
+atlas = ExtResource("27_4odmk")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuhxx"]
+atlas = ExtResource("27_4odmk")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s3wjk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cw70")
+}],
+"loop": true,
+"name": &"dam1",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag8hx")
+}],
+"loop": true,
+"name": &"dam2",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqile")
+}],
+"loop": true,
+"name": &"dam3",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q0od")
+}],
+"loop": true,
+"name": &"dam4",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bo03")
+}],
+"loop": true,
+"name": &"dam5",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuhxx")
+}],
+"loop": true,
+"name": &"dam6",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_caupf")
+}],
+"loop": true,
+"name": &"destroyed",
+"speed": 1.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"none",
+"speed": 1.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
 size = Vector2(18, 17.5)
 
@@ -405,6 +495,12 @@ autoplay = "none"
 [node name="rleg" type="AnimatedSprite2D" parent="layouts/gore"]
 scale = Vector2(0.688, 0.688)
 sprite_frames = SubResource("SpriteFrames_4odmk")
+animation = &"none"
+autoplay = "none"
+
+[node name="torso" type="AnimatedSprite2D" parent="layouts/gore"]
+scale = Vector2(0.688, 0.688)
+sprite_frames = SubResource("SpriteFrames_s3wjk")
 animation = &"none"
 autoplay = "none"
 
