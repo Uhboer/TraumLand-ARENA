@@ -36,3 +36,11 @@ func _on_body_entered(body: Node2D):
 			Global.larmHP -= damage
 			bloody.visible = true
 			timer.wait_time = 2.0
+		if limb == "torso":
+			Global.torsoHP -= damage
+			bloody.visible = true
+			timer.wait_time = 2.0
+		if limb == "head":
+			Global.headHP -= damage
+			bloody.visible = true
+			timer.wait_time = 2.0
