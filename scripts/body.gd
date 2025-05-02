@@ -16,11 +16,14 @@ extends Node2D
 @onready var torsoG = $"../gore/torso"
 @onready var headG = $"../gore/head"
 
+@onready var inv = $"../../Inv"
 
 @onready var collider = $"../../collider"
 @onready var hitbox = $"../../hitbox"
 
 @onready var limb_destructSound = $"../../sounds/limb_destruct"
+
+var damage_area = null
 
 #HEALTH
 
@@ -184,3 +187,16 @@ func laying():
 	hitbox.rotation = 80
 	collider.position.y = 0
 	collider.scale.x = 2
+
+
+func taking_damage():
+	pass
+
+
+func _on_hitbox_area_entered(area):
+	area = damage_area
+
+
+func _on_hitbox_area_exited(area):
+	if area == damage_area:
+		damage_area = null

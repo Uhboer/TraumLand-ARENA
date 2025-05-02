@@ -16,8 +16,8 @@ extends Control
 @onready var chaos = $make/faith/chaos
 @onready var angast = $make/faith/angast
 @onready var great = $sounds/great
-@onready var ᛉ = $make/name/ᛉ
-@onready var ᛣ = $make/name/ᛣ
+@onready var sup = $make/name/sup
+@onready var sdown = $make/name/sdown
 @onready var charactername = $make/name/charactername
 
 
@@ -61,8 +61,8 @@ func _on_name_text_submitted(new_text):
 		Global.playername = playername.text
 		charactername.text = "Name: " + Global.playername
 		great.play()
-		ᛉ.visible = true
-		ᛣ.visible = true
+		sup.visible = true
+		sdown.visible = true
 	else:
 		reject.play()
 

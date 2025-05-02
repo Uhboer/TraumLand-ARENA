@@ -117,7 +117,7 @@ theme_override_fonts/font = ExtResource("1_syfuc")
 placeholder_text = "NAME HERE"
 alignment = 1
 
-[node name="ᛉ" type="Label" parent="make/name"]
+[node name="sup" type="Label" parent="make/name"]
 visible = false
 layout_mode = 0
 offset_left = -33.0
@@ -128,7 +128,7 @@ theme = ExtResource("6_sj3wv")
 theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
 text = "ᛉ"
 
-[node name="ᛣ" type="Label" parent="make/name"]
+[node name="sdown" type="Label" parent="make/name"]
 visible = false
 layout_mode = 0
 offset_left = 209.0

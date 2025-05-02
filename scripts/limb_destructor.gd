@@ -18,8 +18,8 @@ extends Node2D
 func _ready():
 	debug_text.text = "destruct: "+limb
 
-func _on_body_entered(body: Node2D):
-	if body.name == "character":
+func _on_area_entered(area):
+	if area.name == "character":
 		if limb == "lleg":
 			Global.llegHP -= damage
 			bloody.visible = true

@@ -629,7 +629,13 @@ stream = ExtResource("32_s3wjk")
 stream = ExtResource("33_ogkj4")
 
 [node name="hitbox" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_vxf46")
+
+[node name="Inv" type="Timer" parent="."]
+
+[connection signal="area_entered" from="hitbox" to="layouts/body" method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="hitbox" to="layouts/body" method="_on_hitbox_area_exited"]

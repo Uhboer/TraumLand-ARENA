@@ -8,6 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rrt6"]
 
 [node name="limb_destructor" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_tp4ee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -34,4 +35,5 @@ texture = ExtResource("3_kemsk")
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
