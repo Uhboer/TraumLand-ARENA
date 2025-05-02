@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c80w7b81ai53l"]
+[gd_scene load_steps=26 format=3 uid="uid://c80w7b81ai53l"]
 
 [ext_resource type="FontFile" uid="uid://crybdr80yi0o3" path="res://fonts/PIPEC TYPEFACE.ttf" id="1_syfuc"]
 [ext_resource type="Script" uid="uid://0o8ich6mknt6" path="res://scripts/menu.gd" id="1_uptc0"]
@@ -22,12 +22,25 @@
 [ext_resource type="AudioStream" uid="uid://cit74ia57wtmd" path="res://sounds/effects/ui/my.ogg" id="16_r87pu"]
 [ext_resource type="AudioStream" uid="uid://cu0bbk30w8lva" path="res://sounds/effects/ui/thingg.ogg" id="17_dfko6"]
 [ext_resource type="AudioStream" uid="uid://blyv4anhwmkyh" path="res://sounds/effects/ui/type.ogg" id="20_d6hd6"]
+[ext_resource type="Shader" uid="uid://ckdnygmni0f6a" path="res://shaders/cr_crt_02.gdshader" id="23_jilmg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_06rw2"]
 streams_count = 3
 stream_0/stream = ExtResource("7_a51kk")
 stream_1/stream = ExtResource("8_wuo45")
 stream_2/stream = ExtResource("9_jnf8q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jilmg"]
+shader = ExtResource("23_jilmg")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 0.448
+shader_parameter/warp_amount = 0.15
+shader_parameter/edge_intensity = 3.517
+shader_parameter/vignette_amount = 1.0
+shader_parameter/vignette_intensity = 1.0
+shader_parameter/grille_amount = 0.05
+shader_parameter/brightness_boost = 1.335
+shader_parameter/edge_protection = 0.05
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -274,6 +287,17 @@ volume_db = -10.0
 [node name="great" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("17_dfko6")
 volume_db = -5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="shader" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_jilmg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="mouse_entered" from="play" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="play" to="." method="_on_button_pressed"]
