@@ -501,7 +501,7 @@ shader = ExtResource("31_ag8hx")
 shader_parameter/r_displacement = Vector2(3, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-3, 0)
-shader_parameter/intensity = 1.0
+shader_parameter/intensity = 0.5
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7hmiy"]
 streams_count = 5
@@ -607,7 +607,7 @@ position_smoothing_speed = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+[node name="painShader" type="ColorRect" parent="Camera2D/CanvasLayer"]
 material = SubResource("ShaderMaterial_8cw70")
 anchors_preset = 15
 anchor_right = 1.0
