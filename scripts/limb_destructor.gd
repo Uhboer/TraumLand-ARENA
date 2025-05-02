@@ -16,10 +16,10 @@ extends Node2D
 
 
 func _ready():
-	debug_text.text = "destruct: "+limb
+	debug_text.text = "dest: "+limb
 
 func _on_area_entered(area):
-	if area.name == "character":
+	if area.name == "hitbox":
 		if limb == "lleg":
 			Global.llegHP -= damage
 			bloody.visible = true

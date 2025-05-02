@@ -8,6 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rrt6"]
 
 [node name="limb_destructor" type="Area2D"]
+collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_tp4ee")
 

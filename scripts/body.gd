@@ -43,6 +43,9 @@ func _physics_process(delta):
 	limb_damage()
 	limb_destruction()
 	
+	if inv.time_left == 0:
+		taking_damage()
+		inv.start()
 
 
 func _rotation_sprite():
