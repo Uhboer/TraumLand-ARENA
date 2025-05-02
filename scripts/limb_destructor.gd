@@ -20,27 +20,27 @@ func _ready():
 
 func _on_area_entered(area):
 	if area.name == "hitbox":
-		if limb == "lleg":
+		if limb == "lleg" && Global.llegHP > 0:
 			Global.llegHP -= damage
 			bloody.visible = true
 			timer.wait_time = 2.0
-		if limb == "rleg":
+		if limb == "rleg" && Global.rlegHP > 0:
 			Global.rlegHP -= damage
 			bloody.visible = true
 			timer.wait_time = 2.0
-		if limb == "rarm":
+		if limb == "rarm" && Global.rarmHP > 0:
 			Global.rarmHP -= damage
 			bloody.visible = true
 			timer.wait_time = 2.0
-		if limb == "larm":
+		if limb == "larm" && Global.larmHP > 0:
 			Global.larmHP -= damage
 			bloody.visible = true
 			timer.wait_time = 2.0
-		if limb == "torso":
+		if limb == "torso" && Global.torsoHP > 0:
 			Global.torsoHP -= damage
 			bloody.visible = true
 			timer.wait_time = 2.0
-		if limb == "head":
+		if limb == "head" && Global.headHP > 0:
 			Global.headHP -= damage
 			bloody.visible = true
 			timer.wait_time = 2.0

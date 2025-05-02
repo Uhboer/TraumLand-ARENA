@@ -16,12 +16,12 @@ extends Node2D
 @onready var torsoG = $"../gore/torso"
 @onready var headG = $"../gore/head"
 
-@onready var inv = $"../../Inv"
 
 @onready var collider = $"../../collider"
 @onready var hitbox = $"../../hitbox"
 
 @onready var limb_destructSound = $"../../sounds/limb_destruct"
+@onready var taking_dam = $"../../sounds/taking_dam"
 
 var damage_area = null
 
@@ -43,9 +43,6 @@ func _physics_process(delta):
 	limb_damage()
 	limb_destruction()
 	
-	if inv.time_left == 0:
-		taking_damage()
-		inv.start()
 
 
 func _rotation_sprite():
@@ -192,12 +189,10 @@ func laying():
 	collider.scale.x = 2
 
 
-func taking_damage():
-	pass
-
 
 func _on_hitbox_area_entered(area):
 	area = damage_area
+	taking_dam.play()
 
 
 func _on_hitbox_area_exited(area):
