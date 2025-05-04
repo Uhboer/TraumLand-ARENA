@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=84 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -42,6 +42,9 @@
 [ext_resource type="AudioStream" uid="uid://cw0yvb0ulkaty" path="res://sounds/effects/gore/slash2.ogg" id="40_4y27n"]
 [ext_resource type="AudioStream" uid="uid://c2h4yjkjar0fl" path="res://sounds/effects/gore/slash3.ogg" id="41_b2kw6"]
 [ext_resource type="AudioStream" uid="uid://bds5jo0mdidfc" path="res://sounds/effects/gore/stab.ogg" id="42_072t3"]
+[ext_resource type="AudioStream" uid="uid://bjlp4c2emlt7" path="res://sounds/effects/heart/slowbeat.ogg" id="43_4y27n"]
+[ext_resource type="AudioStream" uid="uid://6dx1k0hsfym7" path="res://sounds/effects/heart/fastbeat.ogg" id="44_b2kw6"]
+[ext_resource type="AudioStream" uid="uid://7sujh00t56qg" path="res://sounds/effects/heart/combatcocktail.ogg" id="45_072t3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hmiy"]
 atlas = ExtResource("6_gs04a")
@@ -642,6 +645,20 @@ stream = ExtResource("33_ogkj4")
 [node name="taking_dam" type="AudioStreamPlayer" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_8dhvp")
 volume_db = -13.895
+
+[node name="heart_slow" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("43_4y27n")
+bus = &"Sounds"
+parameters/looping = true
+
+[node name="heart_fast" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("44_b2kw6")
+bus = &"Sounds"
+parameters/looping = true
+
+[node name="heart_bad" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("45_072t3")
+bus = &"Sounds"
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 2
