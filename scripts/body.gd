@@ -38,8 +38,7 @@ var larmLIVE = true
 var rlegLIVE = true
 var llegLIVE = true
 
-#var intensitySd = pain_shader.get("material/shader_param/intensity")
-var pain = 0.5
+var pain = 0.0
 
 var death = false
 
@@ -164,18 +163,22 @@ func limb_destruction():
 		rarm.visible = false
 		limb_destructSound.play()
 		rarmLIVE = false
+		pain += 25
 	if Global.larmHP <= 0 && larmLIVE:
 		larm.visible = false
 		limb_destructSound.play()
 		larmLIVE = false
+		pain += 25
 	if Global.rlegHP <= 0 && rlegLIVE:
 		rleg.visible = false
 		limb_destructSound.play()
 		rlegLIVE = false
+		pain += 25
 	if Global.llegHP <= 0 && llegLIVE:
 		lleg.visible = false
 		limb_destructSound.play()
 		llegLIVE = false
+		pain += 25
 	
 	## LEGS
 	if llegLIVE == false:
@@ -197,8 +200,8 @@ func laying():
 func painSystem():
 	pass
 #	intensitySd += pain
-#	pain_shader.get_material().set_shader_param("intensity", 5.0)
-#	print(intensitySd)
+	pain_shader.get_material().set_shader_parameter("intensity", pain)
+#	print(pain)
 
 
 #taking damage
