@@ -198,17 +198,14 @@ func laying():
 	collider.scale.x = 2
 
 func painSystem():
-	pass
-#	intensitySd += pain
-	pain_shader.get_material().set_shader_parameter("intensity", pain)
-#	print(pain)
+	pain_shader.get_material().set_shader_parameter("intensity", pain / 40)
 
 
 #taking damage
 func _on_hitbox_area_entered(area):
 	area = damage_area
 	taking_dam.play()
-	pain += 1
+	pain += 3
 	print(pain)
 
 
