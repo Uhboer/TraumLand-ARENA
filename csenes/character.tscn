@@ -505,7 +505,7 @@ shader = ExtResource("31_ag8hx")
 shader_parameter/r_displacement = Vector2(3, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-3, 0)
-shader_parameter/intensity = 0.5
+shader_parameter/intensity = 0.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7hmiy"]
 streams_count = 5

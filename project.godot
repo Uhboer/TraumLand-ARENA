@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TraumLand"
-run/main_scene="uid://c80w7b81ai53l"
+run/main_scene="uid://bm1yd3t0b850i"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

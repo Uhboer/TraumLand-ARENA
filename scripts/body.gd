@@ -16,6 +16,8 @@ extends Node2D
 @onready var torsoG = $"../gore/torso"
 @onready var headG = $"../gore/head"
 
+@onready var pain_shader = $"../../Camera2D/CanvasLayer/painShader"
+
 
 @onready var collider = $"../../collider"
 @onready var hitbox = $"../../hitbox"
@@ -36,12 +38,16 @@ var larmLIVE = true
 var rlegLIVE = true
 var llegLIVE = true
 
+#var intensitySd = pain_shader.get("material/shader_param/intensity")
+var pain = 0.5
+
 var death = false
 
 func _physics_process(delta):
 	_rotation_sprite()
 	limb_damage()
 	limb_destruction()
+	painSystem()
 	
 
 
@@ -188,11 +194,19 @@ func laying():
 	collider.position.y = 0
 	collider.scale.x = 2
 
+func painSystem():
+	pass
+#	intensitySd += pain
+#	pain_shader.get_material().set_shader_param("intensity", 5.0)
+#	print(intensitySd)
 
 
+#taking damage
 func _on_hitbox_area_entered(area):
 	area = damage_area
 	taking_dam.play()
+	pain += 1
+	print(pain)
 
 
 func _on_hitbox_area_exited(area):

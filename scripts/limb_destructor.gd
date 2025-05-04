@@ -1,7 +1,5 @@
 extends Node2D
 
-@onready var player = $"../character"
-
 @export var limb = "lleg"
 
 @onready var debug_text = $debug_text
