@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @export var limb = "lleg"
 
 @onready var debug_text = $debug_text
@@ -12,33 +13,11 @@ extends Node2D
 
 
 
-
 func _ready():
 	debug_text.text = "dest: "+limb
 
-func _on_area_entered(area):
-	if area.name == "hitbox":
-		if limb == "lleg" && Global.llegHP > 0:
-			Global.llegHP -= damage
-			bloody.visible = true
-			timer.wait_time = 2.0
-		if limb == "rleg" && Global.rlegHP > 0:
-			Global.rlegHP -= damage
-			bloody.visible = true
-			timer.wait_time = 2.0
-		if limb == "rarm" && Global.rarmHP > 0:
-			Global.rarmHP -= damage
-			bloody.visible = true
-			timer.wait_time = 2.0
-		if limb == "larm" && Global.larmHP > 0:
-			Global.larmHP -= damage
-			bloody.visible = true
-			timer.wait_time = 2.0
-		if limb == "torso" && Global.torsoHP > 0:
-			Global.torsoHP -= damage
-			bloody.visible = true
-			timer.wait_time = 2.0
-		if limb == "head" && Global.headHP > 0:
-			Global.headHP -= damage
-			bloody.visible = true
-			timer.wait_time = 2.0
+func _on_area_entered(area : Area2D):
+	if not is_multiplayer_authority(): return
+	if area.name == "player_collider":
+		Global.player_damaged.emit(limb, damage)
+		timer.wait_time = 2.0

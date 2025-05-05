@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=85 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -43,7 +43,11 @@
 [ext_resource type="AudioStream" uid="uid://c2h4yjkjar0fl" path="res://sounds/effects/gore/slash3.ogg" id="41_b2kw6"]
 [ext_resource type="AudioStream" uid="uid://bds5jo0mdidfc" path="res://sounds/effects/gore/stab.ogg" id="42_072t3"]
 [ext_resource type="AudioStream" uid="uid://bjlp4c2emlt7" path="res://sounds/effects/heart/slowbeat.ogg" id="43_4y27n"]
+[ext_resource type="Texture2D" uid="uid://bikfwbjcw1yb0" path="res://sprites/faith/angast.png" id="45_8dhvp"]
 [ext_resource type="AudioStream" uid="uid://7sujh00t56qg" path="res://sounds/effects/heart/combatcocktail.ogg" id="45_072t3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
+size = Vector2(18, 17.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hmiy"]
 atlas = ExtResource("6_gs04a")
@@ -499,9 +503,6 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
-size = Vector2(18, 17.5)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8cw70"]
 shader = ExtResource("31_ag8hx")
 shader_parameter/r_displacement = Vector2(3, 0)
@@ -528,10 +529,104 @@ stream_3/stream = ExtResource("42_072t3")
 radius = 11.0
 height = 46.0
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_b2kw6"]
+properties/0/path = NodePath("nickname:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("player_collider:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("player_collider:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("player_collider:scale")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("layouts:rotation")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("faith:visible")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("faith:metadata/faith_type")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath(".:rotation")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("layouts/body/Head:flip_h")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("layouts/body/Torso:flip_h")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("layouts/body/RLeg:flip_h")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+properties/12/path = NodePath("layouts/body/RArm:flip_h")
+properties/12/spawn = true
+properties/12/replication_mode = 1
+properties/13/path = NodePath("layouts/body/LArm:flip_h")
+properties/13/spawn = true
+properties/13/replication_mode = 1
+properties/14/path = NodePath("layouts/body/LLeg:flip_h")
+properties/14/spawn = true
+properties/14/replication_mode = 1
+properties/15/path = NodePath("layouts/gore/rarm:flip_h")
+properties/15/spawn = true
+properties/15/replication_mode = 1
+properties/16/path = NodePath("layouts/gore/larm:flip_h")
+properties/16/spawn = true
+properties/16/replication_mode = 1
+properties/17/path = NodePath("layouts/gore/lleg:flip_h")
+properties/17/spawn = true
+properties/17/replication_mode = 1
+properties/18/path = NodePath("layouts/gore/rleg:flip_h")
+properties/18/spawn = true
+properties/18/replication_mode = 1
+properties/19/path = NodePath("layouts/gore/torso:flip_h")
+properties/19/spawn = true
+properties/19/replication_mode = 1
+properties/20/path = NodePath("layouts/gore/head:flip_h")
+properties/20/spawn = true
+properties/20/replication_mode = 1
+properties/21/path = NodePath("layouts/body/Head:metadata/hp")
+properties/21/spawn = true
+properties/21/replication_mode = 1
+properties/22/path = NodePath("layouts/body/Torso:metadata/hp")
+properties/22/spawn = true
+properties/22/replication_mode = 1
+properties/23/path = NodePath("layouts/body/RLeg:metadata/hp")
+properties/23/spawn = true
+properties/23/replication_mode = 1
+properties/24/path = NodePath("layouts/body/RArm:metadata/hp")
+properties/24/spawn = true
+properties/24/replication_mode = 1
+properties/25/path = NodePath("layouts/body/LArm:metadata/hp")
+properties/25/spawn = true
+properties/25/replication_mode = 1
+properties/26/path = NodePath("layouts/body/LLeg:metadata/hp")
+properties/26/spawn = true
+properties/26/replication_mode = 1
+
 [node name="character" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_c1skk")
 
+[node name="player_collider" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 10
+
+[node name="collider" type="CollisionShape2D" parent="player_collider"]
+position = Vector2(0, 13.75)
+shape = SubResource("RectangleShape2D_led0e")
+
 [node name="layouts" type="Node2D" parent="."]
+skew = 0.0174533
 
 [node name="body" type="Node2D" parent="layouts"]
 script = ExtResource("2_3we25")
@@ -540,11 +635,13 @@ script = ExtResource("2_3we25")
 position = Vector2(0, 1.19209e-07)
 scale = Vector2(0.6875, 0.6875)
 texture = ExtResource("2_8w61l")
+metadata/hp = 0.0
 
 [node name="Torso" type="Sprite2D" parent="layouts/body"]
 position = Vector2(-7.62939e-06, 2.38419e-07)
 scale = Vector2(0.6875, 0.6875)
 texture = ExtResource("4_vdj6j")
+metadata/hp = 0.0
 
 [node name="RLeg" type="AnimatedSprite2D" parent="layouts/body"]
 position = Vector2(0, -2.38419e-07)
@@ -554,14 +651,17 @@ animation = &"Run"
 autoplay = "Idle"
 frame = 5
 frame_progress = 0.519514
+metadata/hp = 0.0
 
 [node name="RArm" type="Sprite2D" parent="layouts/body"]
 scale = Vector2(0.6875, 0.6875)
 texture = ExtResource("6_ouug3")
+metadata/hp = 0.0
 
 [node name="LArm" type="Sprite2D" parent="layouts/body"]
 scale = Vector2(0.6875, 0.6875)
 texture = ExtResource("3_jnuea")
+metadata/hp = 0.0
 
 [node name="LLeg" type="AnimatedSprite2D" parent="layouts/body"]
 position = Vector2(-3.8147e-06, -9.53674e-07)
@@ -570,6 +670,7 @@ sprite_frames = SubResource("SpriteFrames_ju4hu")
 animation = &"Run"
 autoplay = "Idle"
 frame_progress = 0.369711
+metadata/hp = 0.0
 
 [node name="gore" type="Node2D" parent="layouts"]
 
@@ -609,16 +710,13 @@ sprite_frames = SubResource("SpriteFrames_caupf")
 animation = &"none"
 autoplay = "none"
 
-[node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13.75)
-shape = SubResource("RectangleShape2D_led0e")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.865, 1.865)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+visible = false
 
 [node name="painShader" type="ColorRect" parent="Camera2D/CanvasLayer"]
 material = SubResource("ShaderMaterial_8cw70")
@@ -655,13 +753,29 @@ stream = ExtResource("45_072t3")
 volume_db = 3.0
 bus = &"Sounds"
 
-[node name="hitbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+[node name="nickname" type="RichTextLabel" parent="."]
+offset_left = -35.0
+offset_top = -51.0
+offset_right = 35.0
+offset_bottom = -11.0
+theme_override_font_sizes/normal_font_size = 10
+text = "GOMIK"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="faith" type="Sprite2D" parent="."]
+position = Vector2(0, -45)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("45_8dhvp")
+metadata/faith_type = 0
+
+[node name="player_hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_vxf46")
 
-[connection signal="area_entered" from="hitbox" to="layouts/body" method="_on_hitbox_area_entered"]
-[connection signal="area_exited" from="hitbox" to="layouts/body" method="_on_hitbox_area_exited"]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_b2kw6")
+
+[connection signal="area_entered" from="player_collider" to="layouts/body" method="_on_player_collider_area_entered"]
+[connection signal="area_exited" from="player_collider" to="layouts/body" method="_on_player_collider_area_exited"]

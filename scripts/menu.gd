@@ -25,6 +25,9 @@ extends Control
 @onready var chaosS = $make/faith/Chaos
 
 
+@onready var multplayer = $multplayer
+
+
 func _ready():
 	pass
 
@@ -47,7 +50,8 @@ func _on_readyfordeath_pressed():
 		readyfordeath.disabled = true
 		readyS.play()
 		await readyS.finished
-		get_tree().change_scene_to_file("res://csenes/world.tscn")
+		multplayer.visible = true
+		make.visible = false
 	else:
 		reject.play()
 
@@ -112,3 +116,13 @@ func _on_chaos_mouse_entered():
 
 func _on_angast_mouse_entered():
 	hover.play()
+
+
+func _on_join_pressed() -> void:
+	Global.isServer = false
+	get_tree().change_scene_to_file("res://csenes/world.tscn")
+
+
+func _on_host_pressed() -> void:
+	Global.isServer = true
+	get_tree().change_scene_to_file("res://csenes/world.tscn")

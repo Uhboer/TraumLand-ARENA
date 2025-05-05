@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var char = $"../.."
 @onready var layouts = $".."
 
 @onready var head = $Head
@@ -19,15 +20,31 @@ extends Node2D
 @onready var pain_shader = $"../../Camera2D/CanvasLayer/painShader"
 
 
-@onready var collider = $"../../collider"
-@onready var hitbox = $"../../hitbox"
+@onready var player_collider = $"../../player_collider"
+@onready var player_hitbox = $"../../player_hitbox"
 
 @onready var limb_destructSound = $"../../sounds/limb_destruct"
 @onready var taking_dam = $"../../sounds/taking_dam"
 @onready var heart_slow = $"../../sounds/heart_slow"
 @onready var heart_bad = $"../../sounds/heart_bad"
 
+@onready var limb_list = [
+	head,
+	torso,
+	rleg,
+	lleg,
+	rarm,
+	larm
+]
 
+@onready var damage_list = [
+	headG,
+	torsoG,
+	rlegG,
+	llegG,
+	rarmG,
+	larmG,
+]
 
 var damage_area = null
 
@@ -51,11 +68,42 @@ func _physics_process(delta):
 	limb_damage()
 	limb_destruction()
 	painSystem()
-	
+
+func _ready() -> void:
+	Global.player_damaged.connect(_on_player_damaged)
+	head.set_meta("hp", Global.headHP)
+	torso.set_meta("hp", Global.torsoHP)
+	rleg.set_meta("hp", Global.rlegHP)
+	lleg.set_meta("hp", Global.llegHP)
+	rarm.set_meta("hp", Global.rarmHP)
+	larm.set_meta("hp", Global.larmHP)
+
+
+func _on_player_damaged(part, damage):
+	if not is_multiplayer_authority(): return
+	if part == "lleg" && lleg.get_meta("hp") > 0:
+		lleg.set_meta("hp", lleg.get_meta("hp") - damage)
+	if part == "rleg" && rleg.get_meta("hp") > 0:
+		rleg.set_meta("hp", rleg.get_meta("hp") - damage)
+	if part == "rarm" && rarm.get_meta("hp") > 0:
+		rarm.set_meta("hp", rarm.get_meta("hp") - damage)
+	if part == "larm" && larm.get_meta("hp") > 0:
+		larm.set_meta("hp", larm.get_meta("hp") - damage)
+	if part == "torso" && torso.get_meta("hp") > 0:
+		torso.set_meta("hp", torso.get_meta("hp") - damage)
+	if part == "head" && head.get_meta("hp") > 0:
+		head.set_meta("hp", head.get_meta("hp") - damage)
 
 
 func _rotation_sprite():
-	var direction = Input.get_vector("A", "D", "W", "S")
+	var direction
+	
+	if is_multiplayer_authority():
+		direction = Input.get_vector("A", "D", "W", "S")
+	
+	if !direction:
+		return
+		
 	if direction.x < 0:
 		head.flip_h = true
 		torso.flip_h = true
@@ -84,101 +132,105 @@ func _rotation_sprite():
 		headG.flip_h = false
 
 func limb_damage():
-	if Global.rarmHP > 80:
+	if not is_multiplayer_authority(): return
+		
+	if rarm.get_meta("hp") > 80:
 		rarmG.play("none")
-	if Global.rarmHP <= 80:
+	if rarm.get_meta("hp") <= 80:
 		rarmG.play("dam1")
-	if Global.rarmHP <= 50:
+	if rarm.get_meta("hp") <= 50:
 		rarmG.play("dam2")
-	if Global.rarmHP <= 30:
+	if rarm.get_meta("hp") <= 30:
 		rarmG.play("dam3")
-	if Global.rarmHP <= 0:
+	if rarm.get_meta("hp") <= 0:
 		rarmG.play("halfed")
 	
-	if Global.larmHP > 80:
+	if larm.get_meta("hp") > 80:
 		larmG.play("none")
-	if Global.larmHP <= 80:
+	if larm.get_meta("hp") <= 80:
 		larmG.play("dam1")
-	if Global.larmHP <= 50:
+	if larm.get_meta("hp") <= 50:
 		larmG.play("dam2")
-	if Global.larmHP <= 30:
+	if larm.get_meta("hp") <= 30:
 		larmG.play("dam3")
-	if Global.larmHP <= 0:
+	if larm.get_meta("hp") <= 0:
 		larmG.play("halfed")
 	
-	if Global.llegHP > 80:
+	if lleg.get_meta("hp") > 80:
 		llegG.play("none")
-	if Global.llegHP <= 80:
+	if lleg.get_meta("hp") <= 80:
 		llegG.play("dam1")
-	if Global.llegHP <= 50:
+	if lleg.get_meta("hp") <= 50:
 		llegG.play("dam2")
-	if Global.llegHP <= 30:
+	if lleg.get_meta("hp") <= 30:
 		llegG.play("dam3")
-	if Global.llegHP <= 0:
+	if lleg.get_meta("hp") <= 0:
 		llegG.play("halfed")
 		
-	if Global.rlegHP > 80:
+	if rleg.get_meta("hp") > 80:
 		llegG.play("none")
-	if Global.rlegHP <= 80:
+	if rleg.get_meta("hp") <= 80:
 		rlegG.play("dam1")
-	if Global.rlegHP <= 50:
+	if rleg.get_meta("hp") <= 50:
 		rlegG.play("dam2")
-	if Global.rlegHP <= 30:
+	if rleg.get_meta("hp") <= 30:
 		rlegG.play("dam3")
-	if Global.rlegHP <= 0:
+	if rleg.get_meta("hp") <= 0:
 		rlegG.play("halfed")
 	
-	if Global.torsoHP > 280:
+	if torso.get_meta("hp") > 280:
 		torsoG.play("none")
-	if Global.torsoHP <= 280:
+	if torso.get_meta("hp") <= 280:
 		torsoG.play("dam1")
-	if Global.torsoHP <= 250:
+	if torso.get_meta("hp") <= 250:
 		torsoG.play("dam2")
-	if Global.torsoHP <= 200:
+	if torso.get_meta("hp") <= 200:
 		torsoG.play("dam3")
-	if Global.torsoHP <= 150:
+	if torso.get_meta("hp") <= 150:
 		torsoG.play("dam4")
-	if Global.torsoHP <= 100:
+	if torso.get_meta("hp") <= 100:
 		torsoG.play("dam5")
-	if Global.torsoHP <= 50:
+	if torso.get_meta("hp") <= 50:
 		torsoG.play("dam6")
-	if Global.torsoHP <= 0:
+	if torso.get_meta("hp") <= 0:
 		torsoG.play("destroyed")
 	
-	if Global.headHP > 180:
+	if head.get_meta("hp") > 180:
 		headG.play("none")
-	if  Global.headHP <= 180:
+	if head.get_meta("hp") <= 180:
 		headG.play("dam1")
-	if  Global.headHP <= 150:
+	if head.get_meta("hp") <= 150:
 		headG.play("dam2")
-	if  Global.headHP <= 100:
+	if head.get_meta("hp") <= 100:
 		headG.play("dam3")
-	if  Global.headHP <= 80:
+	if head.get_meta("hp") <= 80:
 		headG.play("dam4")
-	if  Global.headHP <= 50:
+	if head.get_meta("hp") <= 50:
 		headG.play("dam5")
-	if Global.headHP <= 0:
+	if head.get_meta("hp") <= 0:
 		head.visible = false
 		headG.play("halfed")
 	
 	
 func limb_destruction():
-	if Global.rarmHP <= 0 && rarmLIVE:
+	if not is_multiplayer_authority(): return
+		
+	if rarm.get_meta("hp") <= 0 && rarmLIVE:
 		rarm.visible = false
 		limb_destructSound.play()
 		rarmLIVE = false
 		pain += 25
-	if Global.larmHP <= 0 && larmLIVE:
+	if larm.get_meta("hp") <= 0 && larmLIVE:
 		larm.visible = false
 		limb_destructSound.play()
 		larmLIVE = false
 		pain += 25
-	if Global.rlegHP <= 0 && rlegLIVE:
+	if rleg.get_meta("hp") <= 0 && rlegLIVE:
 		rleg.visible = false
 		limb_destructSound.play()
 		rlegLIVE = false
 		pain += 25
-	if Global.llegHP <= 0 && llegLIVE:
+	if lleg.get_meta("hp") <= 0 && llegLIVE:
 		lleg.visible = false
 		limb_destructSound.play()
 		llegLIVE = false
@@ -196,12 +248,15 @@ func limb_destruction():
 
 
 func laying():
-	layouts.rotation = 80
-	hitbox.rotation = 80
-	collider.position.y = 0
-	collider.scale.x = 2
+	if not is_multiplayer_authority(): return
+	layouts.rotation_degrees = 90
+	player_hitbox.rotation_degrees = 90
+	player_collider.position.y = -13
+	player_collider.scale.x = 2
 
 func painSystem():
+	if not is_multiplayer_authority(): return
+		
 	pain_shader.get_material().set_shader_parameter("intensity", pain / 65)
 	
 	var firstpain = false
@@ -214,19 +269,16 @@ func painSystem():
 		if heart_slow.playing == true && firstpain == true:
 			heart_bad.play()
 			firstpain = false
-	
-	
+			
 
-
-
-#taking damage
-func _on_hitbox_area_entered(area):
+func _on_player_collider_area_entered(area: Area2D) -> void:
+	if not is_multiplayer_authority(): return
 	area = damage_area
 	taking_dam.play()
 	pain += 3
-	print(pain)
 
 
-func _on_hitbox_area_exited(area):
+func _on_player_collider_area_exited(area: Area2D) -> void:
+	if not is_multiplayer_authority(): return
 	if area == damage_area:
 		damage_area = null

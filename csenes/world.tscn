@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://bm1yd3t0b850i"]
 
-[ext_resource type="PackedScene" uid="uid://dkhchtxql8eyj" path="res://csenes/character.tscn" id="1_ylpdp"]
+[ext_resource type="Script" uid="uid://mtr1ibqonaoy" path="res://illuzorr/world.gd" id="1_3tdja"]
 [ext_resource type="Texture2D" uid="uid://c36rhcv4p8hkp" path="res://sprites/world/tileset1.png" id="2_6wq6b"]
 [ext_resource type="PackedScene" uid="uid://dk3lkg4genek6" path="res://csenes/limb_destructor.tscn" id="3_86qdu"]
 [ext_resource type="AudioStream" uid="uid://bebmp8ynd2x1t" path="res://sounds/ambience/Deus_Ex_OST_-_UNATCO_67615806.mp3" id="4_qtsc6"]
@@ -43,6 +43,7 @@ tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_sagss")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_3tdja")
 
 [node name="tilemap" type="TileMapLayer" parent="."]
 scale = Vector2(0.75, 0.75)
@@ -78,9 +79,6 @@ damage = 20
 position = Vector2(-49, -113)
 damage = 20
 
-[node name="character" parent="." instance=ExtResource("1_ylpdp")]
-position = Vector2(17, 13)
-
 [node name="sounds" type="Node2D" parent="."]
 
 [node name="ambient" type="AudioStreamPlayer" parent="sounds"]
@@ -91,3 +89,9 @@ autoplay = true
 [node name="start" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("5_3tdja")
 autoplay = true
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://dkhchtxql8eyj")
+spawn_path = NodePath("../Players")
