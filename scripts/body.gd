@@ -26,7 +26,7 @@ extends Node2D
 @onready var taking_dam = $"../../sounds/taking_dam"
 @onready var heart_slow = $"../../sounds/heart_slow"
 @onready var heart_bad = $"../../sounds/heart_bad"
-@onready var heart_fast = $"../../sounds/heart_fast"
+
 
 
 var damage_area = null
@@ -202,16 +202,21 @@ func laying():
 	collider.scale.x = 2
 
 func painSystem():
-	pain_shader.get_material().set_shader_parameter("intensity", pain / 40)
-	if pain < 25:
+	pain_shader.get_material().set_shader_parameter("intensity", pain / 65)
+	
+	var firstpain = false
+	
+	if pain < 50:
 		heart_slow.playing = false
-		heart_fast.playing = false
-	if pain >= 25 && heart_slow.playing == false:
-		heart_slow.playing = true
-		heart_fast.playing = false
-	if pain >= 75 && heart_fast.playing == false:
-		heart_fast.playing = true
-		heart_slow.playing = false
+	if pain >= 50 && heart_slow.playing == false:
+		heart_slow.play()
+		firstpain = true
+		if heart_slow.playing == true && firstpain == true:
+			heart_bad.play()
+			firstpain = false
+	
+	
+
 
 
 #taking damage
