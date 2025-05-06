@@ -1,5 +1,8 @@
 extends Node
 
+
+signal player_damaged(part, damage)
+
 #playerio
 var headHP = 200
 var torsoHP = 300
@@ -11,3 +14,5 @@ var larmHP = 100
 var playername = "Nameless"
 var age = 0
 var faith = ""
+
+var isServer = false

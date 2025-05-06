@@ -9,7 +9,7 @@
 
 [node name="limb_destructor" type="Area2D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_tp4ee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
