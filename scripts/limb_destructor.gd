@@ -20,4 +20,5 @@ func _on_area_entered(area : Area2D):
 	if not is_multiplayer_authority(): return
 	if area.name == "player_collider":
 		Global.player_damaged.emit(limb, damage)
+		bloody.visible = true
 		timer.wait_time = 2.0

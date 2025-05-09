@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=86 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -45,6 +45,7 @@
 [ext_resource type="AudioStream" uid="uid://bjlp4c2emlt7" path="res://sounds/effects/heart/slowbeat.ogg" id="43_4y27n"]
 [ext_resource type="Texture2D" uid="uid://bikfwbjcw1yb0" path="res://sprites/faith/angast.png" id="45_8dhvp"]
 [ext_resource type="AudioStream" uid="uid://7sujh00t56qg" path="res://sounds/effects/heart/combatcocktail.ogg" id="45_072t3"]
+[ext_resource type="Theme" uid="uid://bmvm7ut7ewsn2" path="res://theme/label.tres" id="45_ip6ch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
 size = Vector2(18, 17.5)
@@ -716,7 +717,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-visible = false
 
 [node name="painShader" type="ColorRect" parent="Camera2D/CanvasLayer"]
 material = SubResource("ShaderMaterial_8cw70")
@@ -753,19 +753,19 @@ stream = ExtResource("45_072t3")
 volume_db = 3.0
 bus = &"Sounds"
 
-[node name="nickname" type="RichTextLabel" parent="."]
-offset_left = -35.0
-offset_top = -51.0
-offset_right = 35.0
-offset_bottom = -11.0
-theme_override_font_sizes/normal_font_size = 10
-text = "GOMIK"
-scroll_active = false
+[node name="nickname" type="Label" parent="."]
+offset_left = -57.0
+offset_top = -39.0
+offset_right = 57.0
+offset_bottom = -16.0
+theme = ExtResource("45_ip6ch")
+theme_override_font_sizes/font_size = 10
+text = "PLAYERNAME1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="faith" type="Sprite2D" parent="."]
-position = Vector2(0, -45)
+position = Vector2(14, -18)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("45_8dhvp")
 metadata/faith_type = 0

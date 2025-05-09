@@ -119,10 +119,20 @@ func _on_angast_mouse_entered():
 
 
 func _on_join_pressed() -> void:
+	click.play()
 	Global.isServer = false
 	get_tree().change_scene_to_file("res://csenes/world.tscn")
 
 
 func _on_host_pressed() -> void:
+	click.play()
 	Global.isServer = true
 	get_tree().change_scene_to_file("res://csenes/world.tscn")
+
+
+func _on_join_mouse_entered():
+	hover.play()
+
+
+func _on_host_mouse_entered():
+	hover.play()
