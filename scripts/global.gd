@@ -1,8 +1,6 @@
 extends Node
 
 
-signal player_damaged(part, damage)
-
 #playerio
 var headHP = 200
 var torsoHP = 300
