@@ -12,13 +12,17 @@ extends Node2D
 @onready var timer = $Timer
 
 
-
 func _ready():
 	debug_text.text = "dest: "+limb
 
 func _on_area_entered(area : Area2D):
 	if not is_multiplayer_authority(): return
 	if area.name == "player_collider":
-		Global.player_damaged.emit(limb, damage)
 		bloody.visible = true
 		timer.wait_time = 2.0
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if multiplayer.is_server():
+		var node = body.get_node("./layouts/body")
+		node.rpc("rpc_take_damage", limb, damage)

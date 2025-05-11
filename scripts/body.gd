@@ -70,7 +70,6 @@ func _physics_process(delta):
 	painSystem()
 
 func _ready() -> void:
-	Global.player_damaged.connect(_on_player_damaged)
 	head.set_meta("hp", Global.headHP)
 	torso.set_meta("hp", Global.torsoHP)
 	rleg.set_meta("hp", Global.rlegHP)
@@ -79,8 +78,13 @@ func _ready() -> void:
 	larm.set_meta("hp", Global.larmHP)
 
 
-func _on_player_damaged(part, damage):
-	if not is_multiplayer_authority(): return
+@rpc("any_peer", "call_local")
+func rpc_take_damage(limb, damage):
+	take_damage(limb, damage)
+
+
+@rpc("any_peer", "call_local")
+func take_damage(part, damage):
 	if part == "lleg" && lleg.get_meta("hp") > 0:
 		lleg.set_meta("hp", lleg.get_meta("hp") - damage)
 	if part == "rleg" && rleg.get_meta("hp") > 0:
@@ -131,9 +135,7 @@ func _rotation_sprite():
 		torsoG.flip_h = false
 		headG.flip_h = false
 
-func limb_damage():
-	if not is_multiplayer_authority(): return
-		
+func limb_damage():	
 	if rarm.get_meta("hp") > 80:
 		rarmG.play("none")
 	if rarm.get_meta("hp") <= 80:
@@ -212,9 +214,7 @@ func limb_damage():
 		headG.play("halfed")
 	
 	
-func limb_destruction():
-	if not is_multiplayer_authority(): return
-		
+func limb_destruction():	
 	if rarm.get_meta("hp") <= 0 && rarmLIVE:
 		rarm.visible = false
 		limb_destructSound.play()
@@ -248,15 +248,13 @@ func limb_destruction():
 
 
 func laying():
-	if not is_multiplayer_authority(): return
 	layouts.rotation_degrees = 90
 	player_hitbox.rotation_degrees = 90
 	player_collider.position.y = -13
 	player_collider.scale.x = 2
 
-func painSystem():
+func painSystem():	
 	if not is_multiplayer_authority(): return
-		
 	pain_shader.get_material().set_shader_parameter("intensity", pain / 65)
 	
 	var firstpain = false
