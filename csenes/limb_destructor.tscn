@@ -17,12 +17,13 @@ shape = SubResource("RectangleShape2D_8rrt6")
 
 [node name="debug_text" type="Label" parent="."]
 offset_left = -53.0
-offset_top = -27.0
+offset_top = -30.0
 offset_right = 57.0
-offset_bottom = -9.0
+offset_bottom = -12.0
 theme_override_fonts/font = ExtResource("2_3tdym")
 theme_override_font_sizes/font_size = 13
-text = "destruct: lleg"
+text = "destruct: lleg
+type: slash"
 horizontal_alignment = 1
 
 [node name="icon" type="Sprite2D" parent="."]

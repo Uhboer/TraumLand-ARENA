@@ -15,7 +15,7 @@ extends Node2D
 
 
 func _ready():
-	debug_text.text = "dest: "+limb
+	debug_text.text = "dest: "+limb+"\n"+"type: "+type
 
 func _on_area_entered(area : Area2D):
 	if not is_multiplayer_authority(): return
