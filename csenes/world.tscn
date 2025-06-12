@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=4 uid="uid://bm1yd3t0b850i"]
 
-[ext_resource type="Script" uid="uid://mtr1ibqonaoy" path="res://illuzorr/world.gd" id="1_3tdja"]
+[ext_resource type="Script" uid="uid://mtr1ibqonaoy" path="res://scripts/world.gd" id="1_3tdja"]
 [ext_resource type="Texture2D" uid="uid://c36rhcv4p8hkp" path="res://sprites/world/tileset1.png" id="2_6wq6b"]
 [ext_resource type="PackedScene" uid="uid://dk3lkg4genek6" path="res://csenes/limb_destructor.tscn" id="3_86qdu"]
-[ext_resource type="AudioStream" uid="uid://bebmp8ynd2x1t" path="res://sounds/ambience/Deus_Ex_OST_-_UNATCO_67615806.mp3" id="4_qtsc6"]
+[ext_resource type="AudioStream" uid="uid://bjxpnbm7tygrm" path="res://sounds/ambience/Andriesh Gandrabur — Most disease (www.lightaudio.ru).mp3" id="4_3tdja"]
 [ext_resource type="AudioStream" uid="uid://bhknhfhri5hu5" path="res://sounds/ambience/start.ogg" id="5_3tdja"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sagss"]
@@ -82,7 +82,7 @@ damage = 20
 [node name="sounds" type="Node2D" parent="."]
 
 [node name="ambient" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource("4_qtsc6")
+stream = ExtResource("4_3tdja")
 volume_db = -10.0
 autoplay = true
 

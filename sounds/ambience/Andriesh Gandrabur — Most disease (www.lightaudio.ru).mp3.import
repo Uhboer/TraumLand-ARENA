@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjxpnbm7tygrm"
+path="res://.godot/imported/Andriesh Gandrabur — Most disease (www.lightaudio.ru).mp3-db9e273a53cf5b9a9b8c313716e1e75d.mp3str"
+
+[deps]
+
+source_file="res://sounds/ambience/Andriesh Gandrabur — Most disease (www.lightaudio.ru).mp3"
+dest_files=["res://.godot/imported/Andriesh Gandrabur — Most disease (www.lightaudio.ru).mp3-db9e273a53cf5b9a9b8c313716e1e75d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

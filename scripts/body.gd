@@ -37,6 +37,15 @@ extends Node2D
 	larm
 ]
 
+@onready var bone_list = [
+	head,
+	torso,
+	rleg,
+	lleg,
+	rarm,
+	larm
+]
+
 @onready var damage_list = [
 	headG,
 	torsoG,
@@ -77,25 +86,30 @@ func _ready() -> void:
 	rarm.set_meta("hp", Global.rarmHP)
 	larm.set_meta("hp", Global.larmHP)
 
+	head.set_meta("bone", Global.headbone)
+	torso.set_meta("bone", Global.torsobone)
+	rleg.set_meta("bone", Global.rlegbone)
+	lleg.set_meta("bone", Global.llegbone)
+	rarm.set_meta("bone", Global.rarmbone)
+	larm.set_meta("bone", Global.larmbone)
 
 @rpc("any_peer", "call_local")
-func rpc_take_damage(limb, damage):
-	take_damage(limb, damage)
-
+func rpc_take_damage(limb, damage, type):
+	take_damage(limb, damage, type)
 
 @rpc("any_peer", "call_local")
-func take_damage(part, damage):
-	if part == "lleg" && lleg.get_meta("hp") > 0:
+func take_damage(part, damage, type):
+	if part == "lleg" && type == "slash" && lleg.get_meta("hp") > 0:
 		lleg.set_meta("hp", lleg.get_meta("hp") - damage)
-	if part == "rleg" && rleg.get_meta("hp") > 0:
+	if part == "rleg" && type == "slash" && rleg.get_meta("hp") > 0:
 		rleg.set_meta("hp", rleg.get_meta("hp") - damage)
-	if part == "rarm" && rarm.get_meta("hp") > 0:
+	if part == "rarm" && type == "slash" && rarm.get_meta("hp") > 0:
 		rarm.set_meta("hp", rarm.get_meta("hp") - damage)
-	if part == "larm" && larm.get_meta("hp") > 0:
+	if part == "larm" && type == "slash" && larm.get_meta("hp") > 0:
 		larm.set_meta("hp", larm.get_meta("hp") - damage)
-	if part == "torso" && torso.get_meta("hp") > 0:
+	if part == "torso" && type == "slash" && torso.get_meta("hp") > 0:
 		torso.set_meta("hp", torso.get_meta("hp") - damage)
-	if part == "head" && head.get_meta("hp") > 0:
+	if part == "head" && type == "slash" && head.get_meta("hp") > 0:
 		head.set_meta("hp", head.get_meta("hp") - damage)
 
 

@@ -9,6 +9,8 @@ extends Node2D
 
 @export var damage = 100
 
+@export var type = "slash"
+
 @onready var timer = $Timer
 
 
@@ -25,4 +27,4 @@ func _on_area_entered(area : Area2D):
 func _on_body_entered(body: Node2D) -> void:
 	if multiplayer.is_server():
 		var node = body.get_node("./layouts/body")
-		node.rpc("rpc_take_damage", limb, damage)
+		node.rpc("rpc_take_damage", limb, damage, type)
