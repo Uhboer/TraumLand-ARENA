@@ -112,6 +112,24 @@ func take_damage(part, damage, type):
 	if part == "head" && type == "slash" && head.get_meta("hp") > 0:
 		head.set_meta("hp", head.get_meta("hp") - damage)
 
+	if part == "lleg" && type == "blunt" && lleg.get_meta("hp") > 0:
+		lleg.set_meta("hp", lleg.get_meta("hp") - damage / 2)
+		lleg.set_meta("bone", lleg.get_meta("bone") - damage)
+	if part == "rleg" && type == "blunt" && rleg.get_meta("hp") > 0:
+		rleg.set_meta("hp", rleg.get_meta("hp") - damage / 2)
+		rleg.set_meta("bone", rleg.get_meta("bone") - damage)
+	if part == "rarm" && type == "blunt" && rarm.get_meta("hp") > 0:
+		rarm.set_meta("hp", rarm.get_meta("hp") - damage / 2)
+		rarm.set_meta("bone", rarm.get_meta("bone") - damage)
+	if part == "larm" && type == "blunt" && larm.get_meta("hp") > 0:
+		larm.set_meta("hp", larm.get_meta("hp") - damage / 2)
+		larm.set_meta("bone", larm.get_meta("bone") - damage)
+	if part == "torso" && type == "blunt" && torso.get_meta("hp") > 0:
+		torso.set_meta("hp", torso.get_meta("hp") - damage / 2)
+		torso.set_meta("bone", torso.get_meta("bone") - damage)
+	if part == "head" && type == "blunt" && head.get_meta("hp") > 0:
+		head.set_meta("hp", head.get_meta("hp") - damage / 2)
+		head.set_meta("bone", head.get_meta("bone") - damage)
 
 func _rotation_sprite():
 	var direction
