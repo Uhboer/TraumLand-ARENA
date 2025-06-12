@@ -4,6 +4,7 @@ extends Node2D
 @export var limb = "lleg"
 
 @onready var dam = $dam
+@onready var dam_blunt = $dam_blunt
 
 @onready var debug_text = $debug_text
 
@@ -22,10 +23,12 @@ func _ready():
 func _on_area_entered(area : Area2D):
 	if not is_multiplayer_authority(): return
 	if area.name == "player_collider":
-		dam.play()
 		bloody.visible = true
 		timer.wait_time = 2.0
-
+		if type == "slash":
+			dam.play()
+		elif type == "blunt":
+			dam_blunt.play()
 
 func _on_body_entered(body: Node2D) -> void:
 	if multiplayer.is_server():

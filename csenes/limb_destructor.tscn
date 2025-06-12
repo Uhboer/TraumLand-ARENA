@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk3lkg4genek6"]
+[gd_scene load_steps=15 format=3 uid="uid://dk3lkg4genek6"]
 
 [ext_resource type="Script" uid="uid://bnwjj6gcij1df" path="res://scripts/limb_destructor.gd" id="1_tp4ee"]
 [ext_resource type="Texture2D" uid="uid://o7vjkf5u6juk" path="res://sprites/world/limbeater.png" id="2_2t5y6"]
@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://cw0yvb0ulkaty" path="res://sounds/effects/gore/slash2.ogg" id="6_tfndt"]
 [ext_resource type="AudioStream" uid="uid://c2h4yjkjar0fl" path="res://sounds/effects/gore/slash3.ogg" id="7_67t6j"]
 [ext_resource type="AudioStream" uid="uid://bds5jo0mdidfc" path="res://sounds/effects/gore/stab.ogg" id="8_2ln16"]
+[ext_resource type="AudioStream" uid="uid://cwee6h7r1vgch" path="res://sounds/effects/gore/smash1.ogg" id="9_2ln16"]
+[ext_resource type="AudioStream" uid="uid://bkmae0yhdh8e4" path="res://sounds/effects/gore/smash2.ogg" id="10_1v0oj"]
+[ext_resource type="AudioStream" uid="uid://cf0re0w874tqc" path="res://sounds/effects/gore/smash3.ogg" id="11_36f72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rrt6"]
 
@@ -17,6 +20,12 @@ stream_0/stream = ExtResource("5_cj4rv")
 stream_1/stream = ExtResource("6_tfndt")
 stream_2/stream = ExtResource("7_67t6j")
 stream_3/stream = ExtResource("8_2ln16")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_26dkc"]
+streams_count = 3
+stream_0/stream = ExtResource("9_2ln16")
+stream_1/stream = ExtResource("10_1v0oj")
+stream_2/stream = ExtResource("11_36f72")
 
 [node name="limb_destructor" type="Area2D"]
 collision_layer = 2
@@ -50,6 +59,9 @@ texture = ExtResource("3_kemsk")
 
 [node name="dam" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_1v0oj")
+
+[node name="dam_blunt" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_26dkc")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
