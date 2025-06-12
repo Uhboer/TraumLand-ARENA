@@ -1,11 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk3lkg4genek6"]
+[gd_scene load_steps=11 format=3 uid="uid://dk3lkg4genek6"]
 
 [ext_resource type="Script" uid="uid://bnwjj6gcij1df" path="res://scripts/limb_destructor.gd" id="1_tp4ee"]
 [ext_resource type="Texture2D" uid="uid://o7vjkf5u6juk" path="res://sprites/world/limbeater.png" id="2_2t5y6"]
 [ext_resource type="FontFile" uid="uid://crybdr80yi0o3" path="res://fonts/PIPEC TYPEFACE.ttf" id="2_3tdym"]
 [ext_resource type="Texture2D" uid="uid://c686d014k1hes" path="res://sprites/world/limbeaterbloody.png" id="3_kemsk"]
+[ext_resource type="AudioStream" uid="uid://dk2u3psi487yf" path="res://sounds/effects/gore/slash1.ogg" id="5_cj4rv"]
+[ext_resource type="AudioStream" uid="uid://cw0yvb0ulkaty" path="res://sounds/effects/gore/slash2.ogg" id="6_tfndt"]
+[ext_resource type="AudioStream" uid="uid://c2h4yjkjar0fl" path="res://sounds/effects/gore/slash3.ogg" id="7_67t6j"]
+[ext_resource type="AudioStream" uid="uid://bds5jo0mdidfc" path="res://sounds/effects/gore/stab.ogg" id="8_2ln16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rrt6"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1v0oj"]
+streams_count = 4
+stream_0/stream = ExtResource("5_cj4rv")
+stream_1/stream = ExtResource("6_tfndt")
+stream_2/stream = ExtResource("7_67t6j")
+stream_3/stream = ExtResource("8_2ln16")
 
 [node name="limb_destructor" type="Area2D"]
 collision_layer = 2
@@ -36,6 +47,9 @@ visible = false
 texture = ExtResource("3_kemsk")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="dam" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_1v0oj")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
