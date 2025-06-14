@@ -23,6 +23,7 @@ extends Node2D
 @onready var player_collider = $"../../player_collider"
 @onready var player_hitbox = $"../../player_hitbox"
 
+@onready var bone_destructSound = $"../../sounds/bone_destruct"
 @onready var limb_destructSound = $"../../sounds/limb_destruct"
 @onready var taking_dam = $"../../sounds/taking_dam"
 @onready var heart_slow = $"../../sounds/heart_slow"
@@ -68,6 +69,13 @@ var larmLIVE = true
 var rlegLIVE = true
 var llegLIVE = true
 
+var torsoLIVEBone = true
+var headLIVEBone = true
+var rarmLIVEBone = true
+var larmLIVEBone = true
+var rlegLIVEBone = true
+var llegLIVEBone = true
+
 var pain = 0.0
 
 var death = false
@@ -77,6 +85,7 @@ func _physics_process(delta):
 	limb_damage()
 	limb_destruction()
 	painSystem()
+	print(rarm.get_meta("bone"))
 
 func _ready() -> void:
 	head.set_meta("hp", Global.headHP)
@@ -112,24 +121,24 @@ func take_damage(part, damage, type):
 	if part == "head" && type == "slash" && head.get_meta("hp") > 0:
 		head.set_meta("hp", head.get_meta("hp") - damage)
 
-	if part == "lleg" && type == "blunt" && lleg.get_meta("hp") > 0:
+	if part == "lleg" && type == "blunt" && lleg.get_meta("hp") > 0 && lleg.get_meta("bone") > 0:
 		lleg.set_meta("hp", lleg.get_meta("hp") - damage / 2)
-		lleg.set_meta("bone", lleg.get_meta("bone") - damage)
-	if part == "rleg" && type == "blunt" && rleg.get_meta("hp") > 0:
+		lleg.set_meta("bone", lleg.get_meta("bone") - damage * 1.3)
+	if part == "rleg" && type == "blunt" && rleg.get_meta("hp") > 0 && rleg.get_meta("bone") > 0:
 		rleg.set_meta("hp", rleg.get_meta("hp") - damage / 2)
-		rleg.set_meta("bone", rleg.get_meta("bone") - damage)
-	if part == "rarm" && type == "blunt" && rarm.get_meta("hp") > 0:
+		rleg.set_meta("bone", rleg.get_meta("bone") - damage * 1.3)
+	if part == "rarm" && type == "blunt" && rarm.get_meta("hp") > 0 && rarm.get_meta("bone") > 0:
 		rarm.set_meta("hp", rarm.get_meta("hp") - damage / 2)
-		rarm.set_meta("bone", rarm.get_meta("bone") - damage)
-	if part == "larm" && type == "blunt" && larm.get_meta("hp") > 0:
+		rarm.set_meta("bone", rarm.get_meta("bone") - damage * 1.3)
+	if part == "larm" && type == "blunt" && larm.get_meta("hp") > 0 && larm.get_meta("bone") > 0:
 		larm.set_meta("hp", larm.get_meta("hp") - damage / 2)
-		larm.set_meta("bone", larm.get_meta("bone") - damage)
-	if part == "torso" && type == "blunt" && torso.get_meta("hp") > 0:
+		larm.set_meta("bone", larm.get_meta("bone") - damage * 1.3)
+	if part == "torso" && type == "blunt" && torso.get_meta("hp") > 0 && torso.get_meta("bone") > 0:
 		torso.set_meta("hp", torso.get_meta("hp") - damage / 2)
-		torso.set_meta("bone", torso.get_meta("bone") - damage)
-	if part == "head" && type == "blunt" && head.get_meta("hp") > 0:
+		torso.set_meta("bone", torso.get_meta("bone") - damage * 1.3)
+	if part == "head" && type == "blunt" && head.get_meta("hp") > 0 && head.get_meta("bone") > 0:
 		head.set_meta("hp", head.get_meta("hp") - damage / 2)
-		head.set_meta("bone", head.get_meta("bone") - damage)
+		head.set_meta("bone", head.get_meta("bone") - damage * 1.3)
 
 func _rotation_sprite():
 	var direction
@@ -267,6 +276,26 @@ func limb_destruction():
 		limb_destructSound.play()
 		llegLIVE = false
 		pain += 25
+	
+	## BONES
+	if rarm.get_meta("bone") <= 0 && rarmLIVEBone:
+		bone_destructSound.play()
+		rarmLIVEBone = false
+		pain += 20
+	if larm.get_meta("bone") <= 0 && larmLIVEBone:
+		bone_destructSound.play()
+		larmLIVEBone = false
+		pain += 20
+	if rleg.get_meta("bone") <= 0 && rlegLIVEBone:
+		bone_destructSound.play()
+		rlegLIVEBone = false
+		pain += 20
+	if lleg.get_meta("bone") <= 0 && llegLIVEBone:
+		bone_destructSound.play()
+		llegLIVEBone = false
+		pain += 20
+	
+	
 	
 	## LEGS
 	if llegLIVE == false:
