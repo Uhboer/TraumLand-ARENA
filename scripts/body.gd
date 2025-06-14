@@ -23,6 +23,7 @@ extends Node2D
 @onready var player_collider = $"../../player_collider"
 @onready var player_hitbox = $"../../player_hitbox"
 
+@onready var head_dest = $"../../sounds/head_dest"
 @onready var bone_destructSound = $"../../sounds/bone_destruct"
 @onready var limb_destructSound = $"../../sounds/limb_destruct"
 @onready var taking_dam = $"../../sounds/taking_dam"
@@ -85,7 +86,6 @@ func _physics_process(delta):
 	limb_damage()
 	limb_destruction()
 	painSystem()
-	print(rarm.get_meta("bone"))
 
 func _ready() -> void:
 	head.set_meta("hp", Global.headHP)
@@ -251,7 +251,6 @@ func limb_damage():
 	if head.get_meta("hp") <= 50:
 		headG.play("dam5")
 	if head.get_meta("hp") <= 0:
-		head.visible = false
 		headG.play("halfed")
 	
 	
@@ -276,6 +275,14 @@ func limb_destruction():
 		limb_destructSound.play()
 		llegLIVE = false
 		pain += 25
+	
+	##VITALS
+	if head.get_meta("hp") <= 0 && headLIVE:
+		head.visible = false
+		head_dest.play()
+		headLIVE = false
+		pain += 50
+	
 	
 	## BONES
 	if rarm.get_meta("bone") <= 0 && rarmLIVEBone:

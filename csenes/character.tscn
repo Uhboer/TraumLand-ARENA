@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=92 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -48,6 +48,8 @@
 [ext_resource type="Theme" uid="uid://bmvm7ut7ewsn2" path="res://theme/label.tres" id="45_ip6ch"]
 [ext_resource type="AudioStream" uid="uid://dnxoddv6sngrx" path="res://sounds/effects/gore/crack2.ogg" id="45_l3ttk"]
 [ext_resource type="AudioStream" uid="uid://dgpxa3lgpu2ek" path="res://sounds/effects/gore/crack3.ogg" id="46_2egon"]
+[ext_resource type="AudioStream" uid="uid://psynsiquv3e3" path="res://sounds/effects/gore/newhead_explodie1.ogg" id="47_2egon"]
+[ext_resource type="AudioStream" uid="uid://cpu0mlwti0ccu" path="res://sounds/effects/gore/newhead_explodie2.ogg" id="48_07ksg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
 size = Vector2(18, 17.5)
@@ -533,6 +535,11 @@ stream_0/stream = ExtResource("44_2rudi")
 stream_1/stream = ExtResource("45_l3ttk")
 stream_2/stream = ExtResource("46_2egon")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_onfh0"]
+streams_count = 2
+stream_0/stream = ExtResource("47_2egon")
+stream_1/stream = ExtResource("48_07ksg")
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxf46"]
 radius = 11.0
 height = 46.0
@@ -763,6 +770,10 @@ bus = &"Sounds"
 [node name="bone_destruct" type="AudioStreamPlayer2D" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_07ksg")
 volume_db = 16.886
+
+[node name="head_dest" type="AudioStreamPlayer2D" parent="sounds"]
+stream = SubResource("AudioStreamRandomizer_onfh0")
+volume_db = 9.0
 
 [node name="nickname" type="Label" parent="."]
 offset_left = -57.0
