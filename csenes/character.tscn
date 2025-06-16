@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=95 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://cbvtv6cd8yr8q" path="res://sprites/humanity/gore/head/damaged-Sheet.png" id="29_caupf"]
 [ext_resource type="Texture2D" uid="uid://dybps02yiker4" path="res://sprites/humanity/gore/head/halfed.png" id="30_8cw70"]
 [ext_resource type="Shader" uid="uid://c663tws24j6q4" path="res://shaders/cr_chromatic_abberation 2.gdshader" id="31_ag8hx"]
+[ext_resource type="Shader" uid="uid://fux4nxej8a2a" path="res://shaders/cr_grayscale.gdshader" id="32_onfh0"]
 [ext_resource type="AudioStream" uid="uid://ce1pbde4k1a45" path="res://sounds/effects/combatmode/combatmode.ogg" id="32_s3wjk"]
 [ext_resource type="AudioStream" uid="uid://c5dgl8humf0rd" path="res://sounds/effects/combatmode/combatmodeoff.ogg" id="33_ogkj4"]
 [ext_resource type="AudioStream" uid="uid://crgfutaowxpka" path="res://sounds/effects/gore/trauma1.ogg" id="39_072t3"]
@@ -516,6 +517,10 @@ shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-3, 0)
 shader_parameter/intensity = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mc1ft"]
+shader = ExtResource("32_onfh0")
+shader_parameter/intensity = 0.0
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7hmiy"]
 streams_count = 5
 stream_0/stream = ExtResource("11_g4ng3")
@@ -740,6 +745,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="deathShader" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_mc1ft")
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="sounds" type="Node2D" parent="."]
 

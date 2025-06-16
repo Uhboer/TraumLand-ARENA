@@ -18,6 +18,7 @@ extends Node2D
 @onready var headG = $"../gore/head"
 
 @onready var pain_shader = $"../../Camera2D/CanvasLayer/painShader"
+@onready var death_shader = $"../../Camera2D/CanvasLayer/deathShader"
 
 
 @onready var player_collider = $"../../player_collider"
@@ -80,13 +81,15 @@ var llegLIVEBone = true
 
 var pain = 0.0
 
-var death = false
+var deathcomeslowe = 0
+var char_death = false
 
 func _physics_process(delta):
 	_rotation_sprite()
 	limb_damage()
 	limb_destruction()
 	painSystem()
+	death()
 
 func _ready() -> void:
 	head.set_meta("hp", Global.headHP)
@@ -342,6 +345,15 @@ func painSystem():
 			heart_bad.play()
 			firstpain = false
 			
+
+func death():
+	death_shader.get_material().set_shader_parameter("intensity", deathcomeslowe)
+	if deathcomeslowe <= 1.0:
+		deathcomeslowe += 0.1
+
+
+
+
 
 func _on_player_collider_area_entered(area: Area2D) -> void:
 	if not is_multiplayer_authority(): return
