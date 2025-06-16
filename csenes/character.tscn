@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=93 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -50,6 +50,7 @@
 [ext_resource type="AudioStream" uid="uid://dgpxa3lgpu2ek" path="res://sounds/effects/gore/crack3.ogg" id="46_2egon"]
 [ext_resource type="AudioStream" uid="uid://psynsiquv3e3" path="res://sounds/effects/gore/newhead_explodie1.ogg" id="47_2egon"]
 [ext_resource type="AudioStream" uid="uid://cpu0mlwti0ccu" path="res://sounds/effects/gore/newhead_explodie2.ogg" id="48_07ksg"]
+[ext_resource type="AudioStream" uid="uid://cbh1jmdmyvcwr" path="res://sounds/effects/gore/severed.ogg" id="49_07ksg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
 size = Vector2(18, 17.5)
@@ -774,6 +775,10 @@ volume_db = 16.886
 [node name="head_dest" type="AudioStreamPlayer2D" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_onfh0")
 volume_db = 9.0
+
+[node name="torso_dest" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("49_07ksg")
+volume_db = 5.0
 
 [node name="nickname" type="Label" parent="."]
 offset_left = -57.0

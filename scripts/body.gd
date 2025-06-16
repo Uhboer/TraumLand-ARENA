@@ -23,6 +23,7 @@ extends Node2D
 @onready var player_collider = $"../../player_collider"
 @onready var player_hitbox = $"../../player_hitbox"
 
+@onready var torso_dest = $"../../sounds/torso_dest"
 @onready var head_dest = $"../../sounds/head_dest"
 @onready var bone_destructSound = $"../../sounds/bone_destruct"
 @onready var limb_destructSound = $"../../sounds/limb_destruct"
@@ -281,6 +282,11 @@ func limb_destruction():
 		head.visible = false
 		head_dest.play()
 		headLIVE = false
+		pain += 50
+	
+	if torso.get_meta("hp") <= 0 && torsoLIVE:
+		torso_dest.play()
+		torsoLIVE = false
 		pain += 50
 	
 	
