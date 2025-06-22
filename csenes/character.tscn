@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=100 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -52,6 +52,10 @@
 [ext_resource type="AudioStream" uid="uid://psynsiquv3e3" path="res://sounds/effects/gore/newhead_explodie1.ogg" id="47_2egon"]
 [ext_resource type="AudioStream" uid="uid://cpu0mlwti0ccu" path="res://sounds/effects/gore/newhead_explodie2.ogg" id="48_07ksg"]
 [ext_resource type="AudioStream" uid="uid://cbh1jmdmyvcwr" path="res://sounds/effects/gore/severed.ogg" id="49_07ksg"]
+[ext_resource type="AudioStream" uid="uid://cer2pk7toyg04" path="res://sounds/effects/footstep/grass1.ogg" id="51_xh34y"]
+[ext_resource type="AudioStream" uid="uid://ccxu52er0n1h7" path="res://sounds/effects/footstep/grass2.ogg" id="52_rr5qy"]
+[ext_resource type="AudioStream" uid="uid://c61q1gayxtwhg" path="res://sounds/effects/footstep/grass3.ogg" id="53_kwlod"]
+[ext_resource type="AudioStream" uid="uid://clr515gkp42ch" path="res://sounds/effects/footstep/grass4.ogg" id="54_5no5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
 size = Vector2(18, 17.5)
@@ -546,6 +550,13 @@ streams_count = 2
 stream_0/stream = ExtResource("47_2egon")
 stream_1/stream = ExtResource("48_07ksg")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nmjeq"]
+streams_count = 4
+stream_0/stream = ExtResource("51_xh34y")
+stream_1/stream = ExtResource("52_rr5qy")
+stream_2/stream = ExtResource("53_kwlod")
+stream_3/stream = ExtResource("54_5no5b")
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxf46"]
 radius = 11.0
 height = 46.0
@@ -790,6 +801,9 @@ volume_db = 9.0
 [node name="torso_dest" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("49_07ksg")
 volume_db = 5.0
+
+[node name="walk" type="AudioStreamPlayer2D" parent="sounds"]
+stream = SubResource("AudioStreamRandomizer_nmjeq")
 
 [node name="nickname" type="Label" parent="."]
 offset_left = -57.0

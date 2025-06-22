@@ -10,6 +10,7 @@ extends CharacterBody2D
 
 @onready var nickname = $nickname
 @onready var faith = $faith
+@onready var walk = $sounds/walk
 
 @onready var camera = $Camera2D
 
@@ -51,6 +52,10 @@ func _physics_process(delta):
 		velocity = Vector2(0, 0)
 		animLleg.play("Idle")
 		animRleg.play("Idle")
+	
+	if velocity && !walk.playing:
+		walk.play()
+	
 	move_and_slide()
 	combatmode() 
 
