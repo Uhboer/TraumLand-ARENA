@@ -79,6 +79,9 @@ var larmLIVEBone = true
 var rlegLIVEBone = true
 var llegLIVEBone = true
 
+var lay = false
+var cangetup = true
+
 var pain = 0.0
 
 var deathcomeslowe = 0
@@ -89,7 +92,6 @@ func _physics_process(delta):
 	limb_damage()
 	limb_destruction()
 	painSystem()
-	death()
 
 func _ready() -> void:
 	head.set_meta("hp", Global.headHP)
@@ -325,10 +327,18 @@ func limb_destruction():
 
 
 func laying():
-	layouts.rotation_degrees = 90
-	player_hitbox.rotation_degrees = 90
-	player_collider.position.y = -13
-	player_collider.scale.x = 2
+	if lay == false:
+		layouts.rotation_degrees = 90
+		player_hitbox.rotation_degrees = 90
+		player_collider.position.y = -13
+		player_collider.scale.x = 2
+		lay = true
+	if Input.is_action_just_pressed("V") && cangetup && lay:
+		layouts.rotation_degrees = 0
+		player_hitbox.rotation_degrees = 0
+		player_collider.position.y = 0
+		player_collider.scale.x = 1
+		lay == false
 
 func painSystem():	
 	if not is_multiplayer_authority(): return
