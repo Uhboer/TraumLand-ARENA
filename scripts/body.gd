@@ -33,7 +33,7 @@ extends Node2D
 @onready var heart_bad = $"../../sounds/heart_bad"
 
 var Ambibass = AudioServer.get_bus_index("Ambience")
-
+var Soundbass = AudioServer.get_bus_index("Sounds")
 
 @onready var limb_list = [
 	head,
@@ -159,7 +159,7 @@ func _rotation_sprite():
 	if !direction:
 		return
 		
-	if direction.x < 0:
+	if direction.x < 0 && char_death == false:
 		head.flip_h = true
 		torso.flip_h = true
 		rleg.flip_h = true
@@ -172,7 +172,7 @@ func _rotation_sprite():
 		rlegG.flip_h = true
 		torsoG.flip_h = true
 		headG.flip_h = true
-	if direction.x > 0:
+	if direction.x > 0 && char_death == false:
 		head.flip_h = false
 		torso.flip_h = false
 		rleg.flip_h = false
@@ -368,9 +368,11 @@ func death_checkout():
 
 func death():
 	death_shader.visible = true
+	char_death = true
 	death_shader.get_material().set_shader_parameter("intensity", deathcomeslowe)
 	speed = 0
-	AudioServer.set_bus_mute(Ambibass, not AudioServer.is_bus_mute(Ambibass))
+	AudioServer.set_bus_volume_db(Ambibass, -80)
+	AudioServer.set_bus_volume_db(Soundbass, -80)
 	if deathcomeslowe <= 1.0:
 		deathcomeslowe += 0.1
 

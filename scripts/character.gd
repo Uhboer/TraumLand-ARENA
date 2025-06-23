@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var animLleg = $layouts/body/LLeg
 @onready var animRleg = $layouts/body/RLeg
 
-@onready var body = $layouts/body
+@onready var Charbody = $layouts/body
 
 @onready var combatModeSound = $sounds/combatmode
 @onready var combatModeOffSound = $sounds/combatmodeoff
@@ -44,10 +44,10 @@ func _physics_process(delta):
 	if not is_multiplayer_authority(): return
 		
 	var direction = Input.get_vector("A", "D", "W", "S")
-	if direction:
+	if direction && Charbody.char_death == false:
 		animLleg.play("Run")
 		animRleg.play("Run")
-		velocity = direction * body.speed
+		velocity = direction * Charbody.speed
 	else:
 		velocity = Vector2(0, 0)
 		animLleg.play("Idle")
