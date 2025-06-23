@@ -31,6 +31,7 @@ extends Node2D
 @onready var taking_dam = $"../../sounds/taking_dam"
 @onready var heart_slow = $"../../sounds/heart_slow"
 @onready var heart_bad = $"../../sounds/heart_bad"
+@onready var deathsound = $"../../sounds/deathsound"
 
 var Ambibass = AudioServer.get_bus_index("Ambience")
 var Soundbass = AudioServer.get_bus_index("Sounds")
@@ -367,12 +368,13 @@ func death_checkout():
 
 
 func death():
+	deathsound.play()
 	death_shader.visible = true
 	char_death = true
 	death_shader.get_material().set_shader_parameter("intensity", deathcomeslowe)
 	speed = 0
 	AudioServer.set_bus_volume_db(Ambibass, -80)
-	AudioServer.set_bus_volume_db(Soundbass, -80)
+	AudioServer.set_bus_volume_db(Soundbass, -70)
 	if deathcomeslowe <= 1.0:
 		deathcomeslowe += 0.1
 

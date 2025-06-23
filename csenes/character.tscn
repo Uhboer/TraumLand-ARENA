@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://dkhchtxql8eyj"]
+[gd_scene load_steps=101 format=3 uid="uid://dkhchtxql8eyj"]
 
 [ext_resource type="Script" uid="uid://c3oul8gs06q8g" path="res://scripts/character.gd" id="1_c1skk"]
 [ext_resource type="Script" uid="uid://dbbb8gsoerq1x" path="res://scripts/body.gd" id="2_3we25"]
@@ -56,6 +56,7 @@
 [ext_resource type="AudioStream" uid="uid://ccxu52er0n1h7" path="res://sounds/effects/footstep/grass2.ogg" id="52_rr5qy"]
 [ext_resource type="AudioStream" uid="uid://c61q1gayxtwhg" path="res://sounds/effects/footstep/grass3.ogg" id="53_kwlod"]
 [ext_resource type="AudioStream" uid="uid://clr515gkp42ch" path="res://sounds/effects/footstep/grass4.ogg" id="54_5no5b"]
+[ext_resource type="AudioStream" uid="uid://ct8xbdbjhqxro" path="res://sounds/effects/heart/death_sound.ogg" id="55_rr5qy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_led0e"]
 size = Vector2(18, 17.5)
@@ -812,6 +813,9 @@ bus = &"Sounds"
 stream = SubResource("AudioStreamRandomizer_nmjeq")
 volume_db = -5.0
 bus = &"Sounds"
+
+[node name="deathsound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("55_rr5qy")
 
 [node name="nickname" type="Label" parent="."]
 offset_left = -57.0
