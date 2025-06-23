@@ -32,6 +32,9 @@ extends Node2D
 @onready var heart_slow = $"../../sounds/heart_slow"
 @onready var heart_bad = $"../../sounds/heart_bad"
 
+var Ambibass = AudioServer.get_bus_index("Ambience")
+
+
 @onready var limb_list = [
 	head,
 	torso,
@@ -92,6 +95,7 @@ func _physics_process(delta):
 	limb_damage()
 	limb_destruction()
 	painSystem()
+	death_checkout()
 
 func _ready() -> void:
 	head.set_meta("hp", Global.headHP)
@@ -356,8 +360,17 @@ func painSystem():
 			firstpain = false
 			
 
+func death_checkout():
+	print(pain)
+	if pain >= 100:
+		death()
+
+
 func death():
+	death_shader.visible = true
 	death_shader.get_material().set_shader_parameter("intensity", deathcomeslowe)
+	speed = 0
+	AudioServer.set_bus_mute(Ambibass, not AudioServer.is_bus_mute(Ambibass))
 	if deathcomeslowe <= 1.0:
 		deathcomeslowe += 0.1
 

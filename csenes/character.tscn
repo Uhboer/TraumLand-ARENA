@@ -765,45 +765,53 @@ offset_bottom = 1080.0
 
 [node name="sounds" type="Node2D" parent="."]
 
-[node name="limb_destruct" type="AudioStreamPlayer" parent="sounds"]
+[node name="limb_destruct" type="AudioStreamPlayer2D" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_7hmiy")
 volume_db = -10.622
 bus = &"Sounds"
 
-[node name="combatmode" type="AudioStreamPlayer" parent="sounds"]
+[node name="combatmode" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("32_s3wjk")
+bus = &"Sounds"
 
-[node name="combatmodeoff" type="AudioStreamPlayer" parent="sounds"]
+[node name="combatmodeoff" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("33_ogkj4")
+bus = &"Sounds"
 
-[node name="taking_dam" type="AudioStreamPlayer" parent="sounds"]
+[node name="taking_dam" type="AudioStreamPlayer2D" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_8dhvp")
 volume_db = -13.895
-
-[node name="heart_slow" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource("43_4y27n")
 bus = &"Sounds"
+
+[node name="heart_slow" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("43_4y27n")
+bus = &"Heart"
 parameters/looping = true
 
-[node name="heart_bad" type="AudioStreamPlayer" parent="sounds"]
+[node name="heart_bad" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("45_072t3")
 volume_db = 3.0
-bus = &"Sounds"
+bus = &"Heart"
 
 [node name="bone_destruct" type="AudioStreamPlayer2D" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_07ksg")
 volume_db = 16.886
+bus = &"Sounds"
 
 [node name="head_dest" type="AudioStreamPlayer2D" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_onfh0")
 volume_db = 9.0
+bus = &"Sounds"
 
 [node name="torso_dest" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("49_07ksg")
 volume_db = 5.0
+bus = &"Sounds"
 
 [node name="walk" type="AudioStreamPlayer2D" parent="sounds"]
 stream = SubResource("AudioStreamRandomizer_nmjeq")
+volume_db = -5.0
+bus = &"Sounds"
 
 [node name="nickname" type="Label" parent="."]
 offset_left = -57.0

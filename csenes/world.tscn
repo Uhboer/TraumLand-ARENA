@@ -86,10 +86,12 @@ damage = 20
 stream = ExtResource("4_3tdja")
 volume_db = -10.0
 autoplay = true
+bus = &"Ambience"
 
 [node name="start" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("5_3tdja")
 autoplay = true
+bus = &"Ambience"
 
 [node name="Players" type="Node2D" parent="."]
 
