@@ -86,6 +86,8 @@ var llegLIVEBone = true
 var lay = false
 var cangetup = true
 
+var a = false
+
 var pain = 0.0
 
 var deathcomeslowe = 0
@@ -359,7 +361,6 @@ func painSystem():
 		if heart_slow.playing == true && firstpain == true:
 			heart_bad.play()
 			firstpain = false
-			
 
 func death_checkout():
 	print(pain)
@@ -368,13 +369,15 @@ func death_checkout():
 
 
 func death():
-	deathsound.play()
 	death_shader.visible = true
 	char_death = true
 	death_shader.get_material().set_shader_parameter("intensity", deathcomeslowe)
 	speed = 0
 	AudioServer.set_bus_volume_db(Ambibass, -80)
 	AudioServer.set_bus_volume_db(Soundbass, -70)
+	if !deathsound.playing && a == false:
+		deathsound.play()
+		a = true
 	if deathcomeslowe <= 1.0:
 		deathcomeslowe += 0.1
 

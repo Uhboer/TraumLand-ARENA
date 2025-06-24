@@ -816,6 +816,7 @@ bus = &"Sounds"
 
 [node name="deathsound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("55_rr5qy")
+bus = &"Death"
 
 [node name="nickname" type="Label" parent="."]
 offset_left = -57.0
