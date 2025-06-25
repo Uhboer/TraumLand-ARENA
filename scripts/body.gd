@@ -32,6 +32,7 @@ extends Node2D
 @onready var heart_slow = $"../../sounds/heart_slow"
 @onready var heart_bad = $"../../sounds/heart_bad"
 @onready var deathsound = $"../../sounds/deathsound"
+@onready var deathmusic = $"../../sounds/deathmusic"
 
 var Ambibass = AudioServer.get_bus_index("Ambience")
 var Soundbass = AudioServer.get_bus_index("Sounds")
@@ -99,6 +100,7 @@ func _physics_process(delta):
 	limb_destruction()
 	painSystem()
 	death_checkout()
+	#layable()
 
 func _ready() -> void:
 	head.set_meta("hp", Global.headHP)
@@ -333,6 +335,7 @@ func limb_destruction():
 		speed = 0
 
 
+
 func laying():
 	if lay == false:
 		layouts.rotation_degrees = 90
@@ -363,12 +366,16 @@ func painSystem():
 			firstpain = false
 
 func death_checkout():
-	print(pain)
-	if pain >= 100:
+	if pain >= 100 || headLIVE == false || torsoLIVE == false || headLIVEBone == false:
 		death()
+	if char_death && !deathmusic.playing:
+		deathmusic.play()
+	else:
+		return
 
 
 func death():
+	laying()
 	death_shader.visible = true
 	char_death = true
 	death_shader.get_material().set_shader_parameter("intensity", deathcomeslowe)
